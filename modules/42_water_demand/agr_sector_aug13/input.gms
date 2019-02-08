@@ -71,3 +71,19 @@ $ondelim
 $include "./modules/42_water_demand/input/f42_env_flow_policy.cs3"
 $offdelim
 ;
+
+
+$setglobal c42_watavail_scenario  nocc
+*   options:   cc  (climate change)
+*             nocc (no climate change)
+
+parameters
+f42_wat_avail(t_all,j) Surface water available for irrigation per cell from LPJmL (mio. m^3 per yr)
+/
+$ondelim
+$include "./modules/42_water_demand/input/lpj_watavail_grper.cs2"
+$offdelim
+/
+;
+$if "%c42_watavail_scenario%" == "nocc" f42_wat_avail(t_all,j) = f42_wat_avail("y1995",j);
+m_fillmissingyears(f42_wat_avail,"j");

@@ -4,4 +4,5 @@
 *** |  or later. See LICENSE file or go to http://www.gnu.org/licenses/
 *** |  Contact: magpie@pik-potsdam.de
 
-vm_watdem.scale(wat_dem,j) = 10e4;
+v42_watdem.scale(wat_dem,j) = 10e4;
+v42_watavail.scale(wat_src,j) = 10e5;

@@ -4,7 +4,7 @@
 *** |  or later. See LICENSE file or go to http://www.gnu.org/licenses/
 *** |  Contact: magpie@pik-potsdam.de
 
-*' @description  
+*' @description
 *'
 *' This realization models agricultural sector water demand endogenously, while other sectors are kept exogenous;
 *' Various settings for environmental water demand described below.
@@ -59,7 +59,7 @@
 *' * Environmental flow requirements (EFR) are calculated from LPJmL inputs
 *'   according to an algorithm by  @smakhtin_water_2004 on cluster level. Due to
 *'   the fact that MAgPIE only considers available blue water during the growing
-*'   period of the plants ([43_water_availability]), EFR are also only
+*'   period of the plants, EFR are also only
 *'   calculated during this growing period. They are reserved in addition to
 *'   `s42_protected_fraction`. In the case of the absence of an environmental
 *'   flow protection (EFP) policy, a base protection can be specified:

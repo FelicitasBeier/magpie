@@ -8,3 +8,10 @@ i42_wat_req_k(t,j,kve) = f42_wat_req_kve(t,j,kve);
 i42_env_flows(t,j) = f42_env_flows(t,j);
 
 i42_wat_req_k(t,j,kli) = f42_wat_req_kli(kli);
+
+
+i42_wat_avail(t,"surface",j) = f42_wat_avail(t,j);
+
+i42_wat_avail(t,"ground",j) = 0;
+i42_wat_avail(t,"ren_ground",j) = 0;
+i42_wat_avail(t,"technical",j) = 0;

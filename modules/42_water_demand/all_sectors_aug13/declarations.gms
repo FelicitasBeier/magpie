@@ -11,21 +11,26 @@ parameters
  i42_env_flows_base(t,j)             Environmental flow requirements in case of no policy (mio m^3)
  ic42_env_flow_policy(i)             Determines whether environmental flow protection is enforced in the current time step (1)
  i42_env_flow_policy(t,i)            Determines whether environmental flow protection is enforced (1)
+ i42_wat_avail(t,wat_src,j)           Water availability (mio. m^3 per yr)
 ;
 
 equations
  q42_water_demand(wat_dem,j)         Water consumption in different sectors (mio. m^3 per yr)
+ q42_water(j)                        Local seasonal water constraints (mio. m^3 per yr)
 ;
 
 positive variables
-  vm_watdem(wat_dem,j)               Amount of water needed in different sectors (mio. m^3 per yr)
+  v42_watdem(wat_dem,j)               Amount of water needed in different sectors (mio. m^3 per yr)
   v42_irrig_eff(j)                   Irrigation efficiency (1)
+  v42_watavail(wat_src,j)            Water available from different sources (mio. m^3 per yr)
 ;
 
 *#################### R SECTION START (OUTPUT DECLARATIONS) ####################
 parameters
  ov_watdem(t,wat_dem,j,type)         Amount of water needed in different sectors (mio. m^3 per yr)
  ov42_irrig_eff(t,j,type)            Irrigation efficiency (1)
+ ov42_watavail(t,wat_src,j,type)     Water available from different sources (mio. m^3 per yr)
  oq42_water_demand(t,wat_dem,j,type) Water consumption in different sectors (mio. m^3 per yr)
+ oq42_water(t,j,type)                Local seasonal water constraints (mio. m^3 per yr)
 ;
 *##################### R SECTION END (OUTPUT DECLARATIONS) #####################
