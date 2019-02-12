@@ -12,7 +12,7 @@
 *' Cropland areas are linked to the crop specific production and the carbon
 *' content of the different land carbon pools. The crop specific land use areas
 *' are also used in [18_residues], [38_factor_costs],
-*' [41_area_equipped_for_irrigation], [42_water_demand], [50_nr_soil_budget],
+*' [41_area_equipped_for_irrigation], [42_water], [50_nr_soil_budget],
 *' [53_methane] and [59_som].
 
 *' @limitations There are currently no known limitations of this realization.
