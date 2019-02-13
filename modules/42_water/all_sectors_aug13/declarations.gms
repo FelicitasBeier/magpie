@@ -11,7 +11,7 @@ parameters
  i42_env_flows_base(t,j)             Environmental flow requirements in case of no policy (mio m^3)
  ic42_env_flow_policy(i)             Determines whether environmental flow protection is enforced in the current time step (1)
  i42_env_flow_policy(t,i)            Determines whether environmental flow protection is enforced (1)
- i42_wat_avail(t,wat_src,j)           Water availability (mio. m^3 per yr)
+ i42_wat_avail(t,wat_src,j)          Water availability (mio. m^3 per yr)
 ;
 
 equations

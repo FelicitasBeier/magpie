@@ -44,7 +44,6 @@ Elseif(s42_env_flow_scenario=1),
 v42_watdem.fx("ecosystem",j) = sum(cell(i,j), i42_env_flows_base(t,j) * (1-ic42_env_flow_policy(i)) +
                                                           i42_env_flows(t,j) * ic42_env_flow_policy(i));
 
-
 * irrigation efficiency
 if((s42_irrig_eff_scenario = 1),
  v42_irrig_eff.fx(j) = s42_irrigation_efficiency;
