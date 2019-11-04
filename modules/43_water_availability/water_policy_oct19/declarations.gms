@@ -11,13 +11,13 @@ parameters
 
 variables
   v43_watavail(wat_src,j)         Water available from different sources (mio. m^3 per yr)
-  v43_watdem_reg(wat_dem,i2)      Regional water demand from all sectors (mio. m^3 per yr)
+  v43_watdem_reg(wat_dem,i)      Regional water demand from all sectors (mio. m^3 per yr)
 ;
 
 equations
   q43_water(j)                    Local seasonal water constraints (mio. m^3 per yr)
-  q43_water_reg(wat_dem,i2)       Determines regional water demand (mio. m^3 per yr)
-  q43_watercap_China(i2)          Total water cap of all sectors (mio. m^3 per yr)
+  q43_water_reg(wat_dem,i)       Determines regional water demand (mio. m^3 per yr)
+  q43_watercap_China(i)          Total water cap of all sectors (mio. m^3 per yr)
 ;
 
 *#################### R SECTION START (OUTPUT DECLARATIONS) ####################

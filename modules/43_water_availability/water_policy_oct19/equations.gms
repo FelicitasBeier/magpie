@@ -24,5 +24,5 @@ q43_water_reg(wat_dem,i2)  ..
    v43_watdem_reg(wat_dem,i2) =e= sum(cell(i2,j2),vm_watdem(wat_dem,j2))  ;
 
 *' Water cap of total water consumption (all sectors) of 700 billion cubic meters in China
-q43_watercap_China(i2) ..
+q43_watercap_China ..
   sum(wat_dem, v43_watdem_reg(wat_dem,"CHA")) =l= 700000 ;
