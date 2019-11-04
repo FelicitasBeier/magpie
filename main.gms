@@ -188,7 +188,7 @@ $setglobal landconversion  global_static_aug18
 $setglobal transport  gtap_nov12
 $setglobal area_equipped_for_irrigation  endo_apr13
 $setglobal water_demand  agr_sector_aug13
-$setglobal water_availability  total_water_aug13
+$setglobal water_availability  water_policy_oct19
 $setglobal climate  static
 
 $setglobal nr_soil_budget  exoeff_aug16
