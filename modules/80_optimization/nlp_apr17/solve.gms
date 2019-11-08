@@ -50,7 +50,7 @@ repeat(
   display vm_cost_glo.l;
 
 * write extended run information in list file in the case that the final solution is infeasible
-  if((s80_counter >= s80_maxiter and p80_modelstat(t) > 2 and p80_modelstat(t) ne 7),
+  if((s80_counter >= (s80_maxiter-1) and p80_modelstat(t) > 2 and p80_modelstat(t) ne 7),
     magpie.solprint = 1
   );
 

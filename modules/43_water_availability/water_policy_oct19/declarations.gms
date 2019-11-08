@@ -26,6 +26,6 @@ parameters
  ov43_watdem_reg(t,wat_dem,i,type) Regional water demand from all sectors (mio. m^3 per yr)
  oq43_water(t,j,type)              Local seasonal water constraints (mio. m^3 per yr)
  oq43_water_reg(t,wat_dem,i,type)  Determines regional water demand (mio. m^3 per yr)
- oq43_watercap_China(t,i,type)     Total water cap of all sectors (mio. m^3 per yr)
+ oq43_watercap_China(t,type)       Total water cap of all sectors (mio. m^3 per yr)
 ;
 *##################### R SECTION END (OUTPUT DECLARATIONS) #####################
