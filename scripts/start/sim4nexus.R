@@ -56,7 +56,7 @@ general_settings<-function(title) {
   cfg$gms$forestry  <- "dynamic_oct19"
   cfg$gms$maccs  <- "on_sep16"
   cfg$title <- paste0("sim4nexus_v2_",title)
-  #  include costs per-ton
+  cfg$gms$factor_costs <- "fixed_per_ton_mar18"
   return(cfg)
 }
 
@@ -153,7 +153,7 @@ cfg$gms$s42_irrig_eff_scenario <- 1
 cfg$gms$s42_irrigation_efficiency <- 0.76
 cfg$gms$c42_env_flow_policy <- "on"
 cfg$gms$c50_scen_neff <- "neff70_75_starty2010"
-start_run(cfg=cfg,codeCheck=codeCheck)
+#start_run(cfg=cfg,codeCheck=codeCheck)
 
 # Global biodiversity
 cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_6p0_NoMit_biodiversity")
@@ -175,7 +175,7 @@ cfg$gms$s12_interest_hic <- "0.02"         # def = 0.04
 cfg$gms$c35_protect_scenario <- "BH"
 cfg$gms$c50_scen_neff <- "neff70_75_starty2010"
 cfg$gms$c55_scen_conf <- "SSP1"
-start_run(cfg=cfg,codeCheck=codeCheck)
+#start_run(cfg=cfg,codeCheck=codeCheck)
 
 # Global diet shift
 cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_6p0_NoMit_diet")
@@ -200,7 +200,7 @@ cfg$gms$s12_hist_interest_hic <- "0.04"    # def = 0.04
 cfg$gms$s12_interest_lic <- "0.05"         # def = 0.1
 cfg$gms$s12_interest_hic <- "0.02"         # def = 0.04
 cfg$gms$c55_scen_conf <- "SSP1"
-start_run(cfg=cfg,codeCheck=codeCheck)
+#start_run(cfg=cfg,codeCheck=codeCheck)
 
 # Combination of all global scenarios
 cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_6p0_NoMit_combined")
@@ -227,7 +227,7 @@ cfg$gms$c50_scen_neff <- "neff75_80_starty2010"
 cfg$gms$c55_scen_conf <- "SSP1"
 cfg$gms$c56_pollutant_prices <- "R2M41-SSP2-Budg1300"
 cfg$gms$c60_2ndgen_biodem    <- "R2M41-SSP2-Budg1300"
-start_run(cfg=cfg,codeCheck=codeCheck)
+#start_run(cfg=cfg,codeCheck=codeCheck)
 
 
 #SIM4NEXUS regional runs#############################################
