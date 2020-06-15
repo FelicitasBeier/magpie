@@ -31,7 +31,7 @@ buildInputVector <- function(regionmapping   = "agmip",
   mappings <- c(h11="8a828c6ed5004e77d1ba2025e8ea2261",
                 h12="690d3718e151be1b450b394c1064b1c5",
                 mag="c30c1c580039c2b300d86cc46ff4036a",
-                inms="d9303655de75494941cc82740bcd1ae4",
+                inms="1ffb3a6fd3ac74779d7fb03a215fbec6",
                 inms2="ef2ae7cd6110d5d142a9f8bd7d5a68f2",
                 agmip="c77f075908c3bc29bdbe1976165eccaf")
   archive_name=paste(project_name,climate_model,climatescen_name,co2,sep="-")
