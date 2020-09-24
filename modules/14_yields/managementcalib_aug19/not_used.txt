@@ -4,17 +4,4 @@
 # |  AGPL-3.0, you are granted additional permissions described in the
 # |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 # |  Contact: magpie@pik-potsdam.de
-file;destination
-clustermap_rev*.rds;input
-avl_land_*.mz;input
-diagnostics.log;input
-diagnostics.csv;input
-diagnostics_full.log;input
-file2destination.csv;input
-info.txt;input
-ready.rdy;input
-spatial_header.rda;input
-validation.mif;input
-rr_layer_*.mz;input
-luh2_side_layers_*.mz;input
-*_mapping.rds;input
+name,type,reason
