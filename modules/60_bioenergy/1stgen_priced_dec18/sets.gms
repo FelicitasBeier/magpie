@@ -42,4 +42,6 @@ sets
    scen2ndres60 residues for second generation bioenergy scenarios
        / ssp1, ssp2, ssp3, ssp4, ssp5, sdp, off /
 
+   s4nscen60 sim4nexus bioenergy demand scenarios / SSP2, SSP2_SPA2_26I_D /
+
 ;

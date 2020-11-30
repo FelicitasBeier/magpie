@@ -53,6 +53,7 @@ scalars
 
 $setglobal c56_pollutant_prices  R2M41-SSP2-NPi
 $setglobal c56_pollutant_prices_noselect  R2M41-SSP2-NPi
+$setglobal c56_s4n_scenario  SSP2
 $setglobal c56_emis_policy  redd+_nosoil
 
 table f56_pollutant_prices(t_all,i,pollutants,ghgscen56) GHG certificate prices for N2O-N CH4 CO2-C (USD05MER per t)
@@ -72,6 +73,12 @@ $if "%c56_pollutant_prices%" == "emulator" $ondelim
 $if "%c56_pollutant_prices%" == "emulator" $include "./modules/56_ghg_policy/input/f56_pollutant_prices_emulator.cs3"
 $if "%c56_pollutant_prices%" == "emulator" $offdelim
 $if "%c56_pollutant_prices%" == "emulator" ;
+
+$if "%c56_pollutant_prices%" == "sim4nexus" table f56_pollutant_prices_sim4nexus(t_all,i,pollutants,s4nscen56) Regional ghg certificate prices for N2O-N CH4 CO2-C (USD05MER per t)
+$if "%c56_pollutant_prices%" == "sim4nexus" $ondelim
+$if "%c56_pollutant_prices%" == "sim4nexus" $include "./modules/56_ghg_policy/input/f56_pollutant_prices_sim4nexus.cs3"
+$if "%c56_pollutant_prices%" == "sim4nexus" $offdelim
+$if "%c56_pollutant_prices%" == "sim4nexus" ;
 
 *' `f56_emis_policy` contains scenarios determining for each gas and source whether it is priced or not.
 

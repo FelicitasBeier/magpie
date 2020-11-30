@@ -20,6 +20,9 @@ $ifthen "%c60_2ndgen_biodem%" == "coupling"
   i60_bioenergy_dem(t,i) = f60_bioenergy_dem_coupling(t,i);
 $elseif "%c60_2ndgen_biodem%" == "emulator"
   i60_bioenergy_dem(t,i) = f60_bioenergy_dem_emulator(t)/card(i);
+$elseif "%c60_2ndgen_biodem%" == "sim4nexus"
+  i60_bioenergy_dem(t,i) = f60_bioenergy_dem_sim4nexus(t,i,"%c60_s4n_scenario%") * p60_region_BE_shr(t,i)
+                         + f60_bioenergy_dem_sim4nexus(t,i,"%c60_s4n_scenario%") * (1-p60_region_BE_shr(t,i));
 $else
   i60_bioenergy_dem(t,i) = f60_bioenergy_dem(t,i,"%c60_2ndgen_biodem%") * p60_region_BE_shr(t,i)
                          + f60_bioenergy_dem(t,i,"%c60_2ndgen_biodem_noselect%") * (1-p60_region_BE_shr(t,i));
