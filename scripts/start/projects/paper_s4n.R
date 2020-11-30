@@ -37,8 +37,8 @@ buildInputVector <- function(regionmapping   = "H12",
                 coacch="c2a48c5eae535d4b8fe9c953d9986f1b")
   archive_name=paste(project_name,climate_model,climatescen_name,co2,sep="-")
   archive <- paste0(archive_name, "_rev", archive_rev, "_", resolution, "_", mappings[regionmapping], ".tgz")
-  madrat  <- paste0("rev", madrat_rev,"_", mappings[regionmapping], "_magpie", ".tgz")
-  validation  <- paste0("rev", validation_rev,"_", mappings[regionmapping], "_validation", ".tgz")
+  madrat  <- paste0("rev", madrat_rev,"sim4nexus_", mappings[regionmapping], "_magpie", ".tgz")
+  validation  <- paste0("rev", validation_rev,"sim4nexus_", mappings[regionmapping], "_validation", ".tgz")
   return(c(archive,madrat,validation,calibration,additional_data))
 }
 
