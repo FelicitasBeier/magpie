@@ -54,7 +54,7 @@ general_settings<-function(title) {
   cfg$gms$c56_emis_policy <- "all"
   cfg$gms$som <- "cellpool_aug16"
   cfg$gms$c59_som_scenario  <- "cc"
-  cfg$gms$forestry  <- "dynamic_oct19"
+  cfg$gms$forestry  <- "dynamic_may20"
   cfg$gms$maccs  <- "on_sep16"
   cfg$title <- paste0("sim4nexus_v5_",title)
   cfg$gms$factor_costs <- "fixed_per_ton_mar18"
