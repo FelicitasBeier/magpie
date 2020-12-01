@@ -66,7 +66,7 @@ general_settings<-function(title) {
 cfg<-general_settings(title="SSP2_NoCC_NoCC_NoMit_base")
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"nocc")
-cfg$input <- buildInputVector(regionmapping = "coacch",calibration=NULL)
+cfg$input <- buildInputVector(regionmapping = "H12",calibration=NULL)
 cfg$gms$c59_som_scenario  <- "nocc"
 cfg$recalibrate <- TRUE
 start_run(cfg=cfg,codeCheck=codeCheck)
@@ -78,7 +78,7 @@ cfg$recalibrate <- "ifneeded"
 cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_6p0_NoMit_reference")
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
-cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "coacch",calibration=calib)
+cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "H12",calibration=calib)
 start_run(cfg=cfg,codeCheck=codeCheck)
 
 # Scenario runs ###############################################
@@ -99,7 +99,7 @@ cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_2p6_Mit2p6_climate")
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
 cfg<-gms::setScenario(cfg,"NDC")
-cfg$input <- buildInputVector(climatescen_name="rcp2p6",regionmapping = "coacch",calibration=calib)
+cfg$input <- buildInputVector(climatescen_name="rcp2p6",regionmapping = "H12",calibration=calib)
 cfg$gms$c56_pollutant_prices <- "sim4nexus"              # def = R2M41-SSP2-NPi
 cfg$gms$c56_pollutant_prices_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
 cfg$gms$c56_s4n_scenario <- "SSP2_SPA2_26I_D"
@@ -116,7 +116,7 @@ cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_6p0_NoMit_biodiversity")
 # RCP6.0
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
-cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "coacch",calibration=calib)
+cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "H12",calibration=calib)
 cfg$gms$c35_protect_scenario <- "HalfEarth"
 cfg$gms$c50_scen_neff <- "neff70_75_starty2010"
 #cfg$gms$c55_scen_conf <- "SSP1"
@@ -132,7 +132,7 @@ cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_6p0_NoMit_water")
   # improved animal waste mangement
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
-cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "coacch",calibration=calib)
+cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "H12",calibration=calib)
 #cfg$gms$s42_irrig_eff_scenario <- 1
 #cfg$gms$s42_irrigation_efficiency <- 0.76
 cfg$gms$c42_env_flow_policy <- "on"
@@ -147,7 +147,7 @@ cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_6p0_NoMit_food")
   # Waste: max waste of 15%
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
-cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "coacch",calibration=calib)
+cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "H12",calibration=calib)
 cfg$gms$c15_food_scenario <- "SSP1"
 cfg$gms$s15_exo_waste <- 1
 cfg$gms$s15_waste_scen <- 1.2
@@ -168,7 +168,7 @@ cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_2p6_Mit_combined")
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
 cfg<-gms::setScenario(cfg,"NDC")
-cfg$input <- buildInputVector(climatescen_name="rcp2p6",regionmapping = "coacch",calibration=calib)
+cfg$input <- buildInputVector(climatescen_name="rcp2p6",regionmapping = "H12",calibration=calib)
 #cfg$gms$c32_aff_policy <- "ndc"
 cfg$gms$c56_pollutant_prices <- "sim4nexus"              # def = R2M41-SSP2-NPi
 cfg$gms$c56_pollutant_prices_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
