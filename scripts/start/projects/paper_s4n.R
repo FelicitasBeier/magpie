@@ -22,9 +22,9 @@ buildInputVector <- function(regionmapping   = "H12",
                              co2             = "co2",
                              climate_model   = "IPSL_CM5A_LR",
                              resolution      = "c200",
-                             archive_rev     = "52",
-                             madrat_rev      = "4.52",
-                             validation_rev  = "4.52",
+                             archive_rev     = "50",
+                             madrat_rev      = "4.53",
+                             validation_rev  = "4.53",
                              calibration     = "calibration_sim4nexus_may2019.tgz",
                              additional_data = "additional_data_rev3.86.tgz") {
   mappings <- c(H11="8a828c6ed5004e77d1ba2025e8ea2261",
@@ -37,8 +37,8 @@ buildInputVector <- function(regionmapping   = "H12",
                 coacch="c2a48c5eae535d4b8fe9c953d9986f1b")
   archive_name=paste(project_name,climate_model,climatescen_name,co2,sep="-")
   archive <- paste0(archive_name, "_rev", archive_rev, "_", resolution, "_", mappings[regionmapping], ".tgz")
-  madrat  <- paste0("rev", madrat_rev,"sim4nexus_", mappings[regionmapping], "_magpie", ".tgz")
-  validation  <- paste0("rev", validation_rev,"sim4nexus_", mappings[regionmapping], "_validation", ".tgz")
+  madrat  <- paste0("rev", madrat_rev,"sim4nexus_", regionmapping, "_magpie", ".tgz")
+  validation  <- paste0("rev", validation_rev,"sim4nexus_", regionmapping, "_validation", ".tgz")
   return(c(archive,madrat,validation,calibration,additional_data))
 }
 
