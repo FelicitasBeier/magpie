@@ -16,7 +16,7 @@ source("scripts/performance_test.R")
 # Set defaults
 codeCheck <- FALSE
 
-buildInputVector <- function(regionmapping   = "H12",
+buildInputVector <- function(regionmapping   = "h12",
                              project_name    = "isimip_rcp",
                              climatescen_name= "rcp2p6",
                              co2             = "co2",
@@ -28,7 +28,7 @@ buildInputVector <- function(regionmapping   = "H12",
                              calibration     = "calibration_sim4nexus_may2019.tgz",
                              additional_data = "additional_data_rev3.86.tgz") {
   mappings <- c(H11="8a828c6ed5004e77d1ba2025e8ea2261",
-                H12="690d3718e151be1b450b394c1064b1c5",
+                h12="690d3718e151be1b450b394c1064b1c5",
                 mag="c30c1c580039c2b300d86cc46ff4036a",
                 agmip="c77f075908c3bc29bdbe1976165eccaf",
                 sim4nexus="25dd7264e8e145385b3bd0b89ec5f3fc",
