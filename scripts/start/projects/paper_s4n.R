@@ -102,10 +102,10 @@ cfg<-gms::setScenario(cfg,"NDC")
 cfg$input <- buildInputVector(climatescen_name="rcp2p6",regionmapping = "coacch",calibration=calib)
 cfg$gms$c56_pollutant_prices <- "sim4nexus"              # def = R2M41-SSP2-NPi
 cfg$gms$c56_pollutant_prices_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
-cfg$gms$c56_s4n_scenario <- "SSP2"
+cfg$gms$c56_s4n_scenario <- "SSP2_SPA2_26I_D"
 cfg$gms$c60_2ndgen_biodem <- "sim4nexus"              # def = R2M41-SSP2-NPi
 cfg$gms$c60_2ndgen_biodem_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
-cfg$gms$c60_s4n_scenario <- "SSP2"
+cfg$gms$c60_s4n_scenario <- "SSP2_SPA2_26I_D"
 #cfg$gms$c50_scen_neff <- "neff65_70_starty2010" # def=neff60_60_starty2010
 start_run(cfg=cfg,codeCheck=codeCheck)
 
@@ -172,10 +172,10 @@ cfg$input <- buildInputVector(climatescen_name="rcp2p6",regionmapping = "coacch"
 #cfg$gms$c32_aff_policy <- "ndc"
 cfg$gms$c56_pollutant_prices <- "sim4nexus"              # def = R2M41-SSP2-NPi
 cfg$gms$c56_pollutant_prices_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
-cfg$gms$c56_s4n_scenario <- "SSP2"
+cfg$gms$c56_s4n_scenario <- "SSP2_SPA2_26I_D"
 cfg$gms$c60_2ndgen_biodem <- "sim4nexus"              # def = R2M41-SSP2-NPi
 cfg$gms$c60_2ndgen_biodem_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
-cfg$gms$c60_s4n_scenario <- "SSP2"
+cfg$gms$c60_s4n_scenario <- "SSP2_SPA2_26I_D"
 cfg$gms$c35_protect_scenario <- "HalfEarth"
 cfg$gms$c50_scen_neff <- "neff75_80_starty2010"
 cfg$gms$c55_scen_conf <- "SSP1"
