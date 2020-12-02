@@ -25,7 +25,7 @@ buildInputVector <- function(regionmapping   = "h12",
                              archive_rev     = "50",
                              madrat_rev      = "4.53",
                              validation_rev  = "4.53",
-                             calibration     = "calibration_sim4nexus_may2019.tgz",
+                             calibration     = "calibration_sim4nexus_nov2020.tgz",
                              additional_data = "additional_data_rev3.86.tgz") {
   mappings <- c(H11="8a828c6ed5004e77d1ba2025e8ea2261",
                 h12="690d3718e151be1b450b394c1064b1c5",
@@ -70,7 +70,7 @@ cfg$input <- buildInputVector(regionmapping = "h12",calibration=NULL)
 cfg$gms$c59_som_scenario  <- "nocc"
 cfg$recalibrate <- TRUE
 start_run(cfg=cfg,codeCheck=codeCheck)
-calib<-magpie4::submitCalibration(name = "calibration_sim4nexus_may2019")
+calib <- magpie4::submitCalibration(name = "calibration_sim4nexus_nov2020")
 cfg$recalibrate <- "ifneeded"
 
 # Baseline scenario ###############################################
@@ -106,7 +106,8 @@ cfg$gms$c56_s4n_scenario <- "SSP2_SPA2_26I_D"
 cfg$gms$c60_2ndgen_biodem <- "sim4nexus"              # def = R2M41-SSP2-NPi
 cfg$gms$c60_2ndgen_biodem_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
 cfg$gms$c60_s4n_scenario <- "SSP2_SPA2_26I_D"
-#cfg$gms$c50_scen_neff <- "neff65_70_starty2010" # def=neff60_60_starty2010
+# increased fertilizer efficiency
+cfg$gms$c50_scen_neff <- "neff65_70_starty2010"       # def=neff60_60_starty2010
 start_run(cfg=cfg,codeCheck=codeCheck)
 
 # "Biodiversity" scenario
@@ -118,6 +119,7 @@ cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
 cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "h12",calibration=calib)
 cfg$gms$c35_protect_scenario <- "HalfEarth"
+# strongly increased fertilizer efficiency
 cfg$gms$c50_scen_neff <- "neff70_75_starty2010"
 #cfg$gms$c55_scen_conf <- "SSP1"
 start_run(cfg=cfg,codeCheck=codeCheck)
@@ -136,6 +138,7 @@ cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "h12",ca
 #cfg$gms$s42_irrig_eff_scenario <- 1
 #cfg$gms$s42_irrigation_efficiency <- 0.76
 cfg$gms$c42_env_flow_policy <- "on"
+# strongly increased fertilizer efficiency
 cfg$gms$c50_scen_neff <- "neff70_75_starty2010"
 cfg$gms$c55_scen_conf <- "SSP1"
 start_run(cfg=cfg,codeCheck=codeCheck)
