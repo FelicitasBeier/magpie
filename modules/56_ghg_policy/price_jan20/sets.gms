@@ -69,7 +69,8 @@ sets
    	SSPDB-SSP5-45-REMIND-MAGPIE,SSPDB-SSP5-60-REMIND-MAGPIE,
    	SSPDB-SSP5-Ref-REMIND-MAGPIE/
 
-s4nscen56 sim4nexus ghg price scenarios / SSP2, SSP2_SPA2_26I_D /
+  s4nscen56 sim4nexus ghg price scenarios
+  / SSP2, SSP2_SPA2_26I_D /
 
   scen56 emission policy scenarios
   / none, all, ssp, ssp_nosoil, redd+_nosoil, all_nosoil /

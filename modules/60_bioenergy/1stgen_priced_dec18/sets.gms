@@ -18,8 +18,8 @@ sets
 
    scen2nd60 second generation bioenergy scenarios
    /R2M41-SSP2-Budg1300,R2M41-SSP2-Budg600,
-	R2M41-SSP2-Budg950,R2M41-SSP2-NDC,R2M41-SSP2-NPi,
-	SSPDB-SSP1-19-IMAGE,SSPDB-SSP1-19-REMIND-MAGPIE,
+	  R2M41-SSP2-Budg950,R2M41-SSP2-NDC,R2M41-SSP2-NPi,
+	  SSPDB-SSP1-19-IMAGE,SSPDB-SSP1-19-REMIND-MAGPIE,
    	SSPDB-SSP1-26-IMAGE,SSPDB-SSP1-26-REMIND-MAGPIE,
    	SSPDB-SSP1-34-IMAGE,SSPDB-SSP1-34-REMIND-MAGPIE,
    	SSPDB-SSP1-45-IMAGE,SSPDB-SSP1-45-REMIND-MAGPIE,
@@ -42,6 +42,7 @@ sets
    scen2ndres60 residues for second generation bioenergy scenarios
        / ssp1, ssp2, ssp3, ssp4, ssp5, sdp, off /
 
-   s4nscen60 sim4nexus bioenergy demand scenarios / SSP2, SSP2_SPA2_26I_D /
+   s4nscen60 sim4nexus bioenergy demand scenarios
+   / SSP2, SSP2_SPA2_26I_D /
 
 ;
