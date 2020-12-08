@@ -122,7 +122,6 @@ cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "h12",ca
 cfg$gms$c35_protect_scenario <- "HalfEarth"
 # strongly increased fertilizer efficiency
 cfg$gms$c50_scen_neff <- "neff70_75_starty2010"
-#cfg$gms$c55_scen_conf <- "SSP1"
 start_run(cfg=cfg,codeCheck=codeCheck)
 
 # "Water" scenario

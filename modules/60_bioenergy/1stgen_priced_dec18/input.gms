@@ -58,11 +58,9 @@ $if "%c60_2ndgen_biodem%" == "emulator" /
 $if "%c60_2ndgen_biodem%" == "emulator" ;
 
 $if "%c60_2ndgen_biodem%" == "sim4nexus" table f60_bioenergy_dem_sim4nexus(t_all,i,s4nscen60) Bioenergy demand (regional) (mio. GJ per yr)
-$if "%c60_2ndgen_biodem%" == "sim4nexus" /
 $if "%c60_2ndgen_biodem%" == "sim4nexus" $ondelim
 $if "%c60_2ndgen_biodem%" == "sim4nexus" $include "./modules/60_bioenergy/input/f60_bioenergy_dem_sim4nexus.cs3"
 $if "%c60_2ndgen_biodem%" == "sim4nexus" $offdelim
-$if "%c60_2ndgen_biodem%" == "sim4nexus" /
 $if "%c60_2ndgen_biodem%" == "sim4nexus" ;
 
 table f60_bioenergy_dem(t_all,i,scen2nd60) annual bioenergy demand (regional) (mio. GJ per yr)
