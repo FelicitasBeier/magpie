@@ -39,8 +39,7 @@ buildInputVector <- function(regionmapping   = "h12",
   archive <- paste0(archive_name, "_rev", archive_rev, "_", resolution, "_", mappings[regionmapping], ".tgz")
   madrat  <- paste0("rev", madrat_rev,"sim4nexus_", regionmapping, "_magpie", ".tgz")
   validation  <- paste0("rev", validation_rev,"sim4nexus_", regionmapping, "_validation", ".tgz")
-  additional_dummyfile <- paste0("sim4nexus.tgz")
-  return(c(archive,madrat,validation,calibration,additional_data,additional_dummyfile))
+  return(c(archive,madrat,validation,calibration,additional_data))
 }
 
 ### SIM4NEXUS runs ###
