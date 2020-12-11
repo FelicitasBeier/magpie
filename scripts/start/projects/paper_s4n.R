@@ -129,17 +129,12 @@ cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_6p0_NoMit_water")
   # Environmental flow requirements are met
 # Water quality:
   # Increased fertilizer efficiency (70% NUE of croplands)
-# Improved wastewater treatment
-  # improved animal waste mangement
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
 cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "h12",calibration=calib)
-#cfg$gms$s42_irrig_eff_scenario <- 1
-#cfg$gms$s42_irrigation_efficiency <- 0.76
 cfg$gms$c42_env_flow_policy <- "on"
 # strongly increased fertilizer efficiency
 cfg$gms$c50_scen_neff <- "neff70_75_starty2010"
-cfg$gms$c55_scen_conf <- "SSP1"
 start_run(cfg=cfg,codeCheck=codeCheck)
 
 # "Food" scenario
@@ -156,12 +151,6 @@ cfg$gms$s15_waste_scen <- 1.2
 cfg$gms$s15_exo_diet <- 1
 cfg$gms$c15_kcal_scen <- "healthy_BMI"
 cfg$gms$c15_EAT_scen <- "FLX"
-#cfg$gms$c50_scen_neff <- "neff70_75_starty2010"
-#cfg$gms$s12_hist_interest_lic <- "0.1"    # def = 0.1
-#cfg$gms$s12_hist_interest_hic <- "0.04"    # def = 0.04
-#cfg$gms$s12_interest_lic <- "0.05"         # def = 0.1
-#cfg$gms$s12_interest_hic <- "0.02"         # def = 0.04
-#cfg$gms$c55_scen_conf <- "SSP1"
 start_run(cfg=cfg,codeCheck=codeCheck)
 
 # Combination of all global scenarios
@@ -171,7 +160,6 @@ cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
 cfg<-gms::setScenario(cfg,"NDC")
 cfg$input <- buildInputVector(climatescen_name="rcp2p6",regionmapping = "h12",calibration=calib)
-#cfg$gms$c32_aff_policy <- "ndc"
 cfg$gms$c56_pollutant_prices <- "sim4nexus"              # def = R2M41-SSP2-NPi
 cfg$gms$c56_pollutant_prices_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
 cfg$gms$c56_s4n_scenario <- "SSP2_SPA2_26I_D"
@@ -180,12 +168,7 @@ cfg$gms$c60_2ndgen_biodem_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
 cfg$gms$c60_s4n_scenario <- "SSP2_SPA2_26I_D"
 cfg$gms$c35_protect_scenario <- "HalfEarth"
 cfg$gms$c50_scen_neff <- "neff75_80_starty2010"
-cfg$gms$c55_scen_conf <- "SSP1"
-#cfg$gms$s42_irrig_eff_scenario <- 1
-#cfg$gms$s42_irrigation_efficiency <- 0.76
 cfg$gms$c42_env_flow_policy <- "on"
-cfg$gms$c50_scen_neff <- "neff70_75_starty2010"
-cfg$gms$c55_scen_conf <- "SSP1"
 cfg$gms$c15_food_scenario <- "SSP1"
 cfg$gms$s15_exo_waste <- 1
 cfg$gms$s15_waste_scen <- 1.2
