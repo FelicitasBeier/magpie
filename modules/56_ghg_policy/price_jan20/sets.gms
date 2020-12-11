@@ -73,7 +73,7 @@ sets
   / SSP2, SSP2_SPA2_26I_D /
 
   scen56 emission policy scenarios
-  / none, all, ssp, ssp_nosoil, redd+_nosoil, all_nosoil /
+  / none, all, ssp, ssp_nosoil, redd+_nosoil, all_nosoil, maccs_excl_cropland_n2o /
 
    emis_cell_one56(emis_source_cell) cellular oneoff emission sources
    /crop_vegc, crop_litc, crop_soilc, past_vegc, past_litc, past_soilc, forestry_vegc,
