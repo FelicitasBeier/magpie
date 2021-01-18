@@ -19,7 +19,7 @@ equations
 
 *#################### R SECTION START (OUTPUT DECLARATIONS) ####################
 parameters
- ov43_watavail(t,wat_src,j,type) Water available from different sources (mio. m^3 per yr)
- oq43_water(t,j,type)            Local seasonal water constraints (mio. m^3 per yr)
+ ov43_watavail_agcons(t,wat_src,j,type) Water available for consumptive agricultural use from different sources (mio. m^3 per yr)
+ oq43_agwater_cons(t,j,type)            Local seasonal water constraints (mio. m^3 per yr)
 ;
 *##################### R SECTION END (OUTPUT DECLARATIONS) #####################

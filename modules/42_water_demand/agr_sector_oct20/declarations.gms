@@ -11,17 +11,16 @@ parameters
 ;
 
 equations
- q42_agwat_demand(j2)               Agricultural water consumption (mio. m^3 per yr)
+ q42_agwat_demand(j)               Agricultural water consumption (mio. m^3 per yr)
 ;
 
 positive variables
-  vm_agwatdem(j2)                   Water demand from different sectors (mio. m^3 per yr)
+  vm_agwatdem(j)                   Water demand from different sectors (mio. m^3 per yr)
 ;
 
 *#################### R SECTION START (OUTPUT DECLARATIONS) ####################
 parameters
- ov_watdem(t,wat_dem,j,type)         Water demand from different sectors (mio. m^3 per yr)
- ov42_irrig_eff(t,j,type)            Irrigation efficiency (1)
- oq42_water_demand(t,wat_dem,j,type) Water consumption in different sectors (mio. m^3 per yr)
+ ov_agwatdem(t,j,type)       Water demand from different sectors (mio. m^3 per yr)
+ oq42_agwat_demand(t,j,type) Agricultural water consumption (mio. m^3 per yr)
 ;
 *##################### R SECTION END (OUTPUT DECLARATIONS) #####################

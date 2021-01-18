@@ -6,16 +6,12 @@
 *** |  Contact: magpie@pik-potsdam.de
 
 *#################### R SECTION START (OUTPUT DEFINITIONS) #####################
- ov_watdem(t,wat_dem,j,"marginal")         = vm_watdem.m(wat_dem,j);
- ov42_irrig_eff(t,j,"marginal")            = v42_irrig_eff.m(j);
- oq42_water_demand(t,wat_dem,j,"marginal") = q42_water_demand.m(wat_dem,j);
- ov_watdem(t,wat_dem,j,"level")            = vm_watdem.l(wat_dem,j);
- ov42_irrig_eff(t,j,"level")               = v42_irrig_eff.l(j);
- oq42_water_demand(t,wat_dem,j,"level")    = q42_water_demand.l(wat_dem,j);
- ov_watdem(t,wat_dem,j,"upper")            = vm_watdem.up(wat_dem,j);
- ov42_irrig_eff(t,j,"upper")               = v42_irrig_eff.up(j);
- oq42_water_demand(t,wat_dem,j,"upper")    = q42_water_demand.up(wat_dem,j);
- ov_watdem(t,wat_dem,j,"lower")            = vm_watdem.lo(wat_dem,j);
- ov42_irrig_eff(t,j,"lower")               = v42_irrig_eff.lo(j);
- oq42_water_demand(t,wat_dem,j,"lower")    = q42_water_demand.lo(wat_dem,j);
+ ov_agwatdem(t,j,"marginal")       = vm_agwatdem.m(j);
+ oq42_agwat_demand(t,j,"marginal") = q42_agwat_demand.m(j);
+ ov_agwatdem(t,j,"level")          = vm_agwatdem.l(j);
+ oq42_agwat_demand(t,j,"level")    = q42_agwat_demand.l(j);
+ ov_agwatdem(t,j,"upper")          = vm_agwatdem.up(j);
+ oq42_agwat_demand(t,j,"upper")    = q42_agwat_demand.up(j);
+ ov_agwatdem(t,j,"lower")          = vm_agwatdem.lo(j);
+ oq42_agwat_demand(t,j,"lower")    = q42_agwat_demand.lo(j);
 *##################### R SECTION END (OUTPUT DEFINITIONS) ######################

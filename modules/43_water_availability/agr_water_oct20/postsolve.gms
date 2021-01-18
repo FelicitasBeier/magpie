@@ -7,13 +7,13 @@
 
 
 *#################### R SECTION START (OUTPUT DEFINITIONS) #####################
- ov43_watavail(t,wat_src,j,"marginal") = v43_watavail.m(wat_src,j);
- oq43_water(t,j,"marginal")            = q43_water.m(j);
- ov43_watavail(t,wat_src,j,"level")    = v43_watavail.l(wat_src,j);
- oq43_water(t,j,"level")               = q43_water.l(j);
- ov43_watavail(t,wat_src,j,"upper")    = v43_watavail.up(wat_src,j);
- oq43_water(t,j,"upper")               = q43_water.up(j);
- ov43_watavail(t,wat_src,j,"lower")    = v43_watavail.lo(wat_src,j);
- oq43_water(t,j,"lower")               = q43_water.lo(j);
+ ov43_watavail_agcons(t,wat_src,j,"marginal") = v43_watavail_agcons.m(wat_src,j);
+ oq43_agwater_cons(t,j,"marginal")            = q43_agwater_cons.m(j);
+ ov43_watavail_agcons(t,wat_src,j,"level")    = v43_watavail_agcons.l(wat_src,j);
+ oq43_agwater_cons(t,j,"level")               = q43_agwater_cons.l(j);
+ ov43_watavail_agcons(t,wat_src,j,"upper")    = v43_watavail_agcons.up(wat_src,j);
+ oq43_agwater_cons(t,j,"upper")               = q43_agwater_cons.up(j);
+ ov43_watavail_agcons(t,wat_src,j,"lower")    = v43_watavail_agcons.lo(wat_src,j);
+ oq43_agwater_cons(t,j,"lower")               = q43_agwater_cons.lo(j);
 *##################### R SECTION END (OUTPUT DEFINITIONS) ######################
 
