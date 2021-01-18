@@ -10,3 +10,4 @@ im_pop_iso, parameter, not needed
 im_gdp_pc_mer, parameter, not needed
 im_development_state, parameter, not needed
 im_wat_avail, parameter, not needed
+vm_watdem, variable, not needed
