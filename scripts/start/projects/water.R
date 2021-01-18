@@ -30,7 +30,7 @@ cfg$input <- c("isimip_rcp-IPSL_CM5A_LR-rcp2p6-co2_rev50_c200_690d3718e151be1b45
         "rev4.54+mrmagpie10_riverrouting_allocation_h12_validation.tgz",
         "first_water_test.tgz",
         "calibration_H12_c200_26Feb20.tgz",
-        "additional_data_rev3.86.tgz")
+        "additional_data_rev3.93.tgz")
 
 cfg$repositories <- append(list("https://rse.pik-potsdam.de/data/magpie/public"=NULL, "/p/projects/landuse/users/beier/watertest_input"=NULL),
                                     getOption("magpie_repos"))
