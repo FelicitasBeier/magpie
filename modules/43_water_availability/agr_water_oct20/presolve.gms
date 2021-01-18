@@ -5,10 +5,10 @@
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
 
-v43_watavail_cons.fx("surface",j)    = im_wat_avail_cons(t,"surface",j);
-v43_watavail_cons.fx("technical",j)  = im_wat_avail_cons(t,"technical",j);
-v43_watavail_cons.fx("ground",j)     = im_wat_avail_cons(t,"ground",j);
-v43_watavail_cons.fx("ren_ground",j) = im_wat_avail_cons(t,"ren_ground",j);
+v43_watavail_cons.fx("surface",j)    = i43_wat_avail_cons(t,"surface",j);
+v43_watavail_cons.fx("technical",j)  = i43_wat_avail_cons(t,"technical",j);
+v43_watavail_cons.fx("ground",j)     = i43_wat_avail_cons(t,"ground",j);
+v43_watavail_cons.fx("ren_ground",j) = i43_wat_avail_cons(t,"ren_ground",j);
 
 * Update groundwater availability to include overuse from exogenous demands
 *v43_watavail.fx("ground",j) = v43_watavail.up("ground",j)
