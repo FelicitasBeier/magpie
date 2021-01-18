@@ -6,7 +6,7 @@
 *** |  Contact: magpie@pik-potsdam.de
 
 parameters
- im_wat_avail_cons(t,wat_src,j)        Water available for agricultural consumption (mio. m^3 per yr)
+ i43_wat_avail_cons(t,wat_src,j)        Water available for agricultural consumption (mio. m^3 per yr)
 ;
 
 variables
