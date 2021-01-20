@@ -25,7 +25,7 @@ buildInputVector <- function(regionmapping   = "image10",
                              archive_rev     = "52",
                              madrat_rev      = "4.55",
                              validation_rev  = "4.55",
-                             calibration     = "calibration_sim4nexus_nov2020.tgz",
+                             calibration     = "calibration_sim4nexus_jan2021.tgz",
                              additional_data = "additional_data_rev3.92.tgz") {
   mappings <- c(H11="8a828c6ed5004e77d1ba2025e8ea2261",
                 h12="690d3718e151be1b450b394c1064b1c5",
@@ -73,7 +73,7 @@ cfg$gms$c59_som_scenario  <- "nocc"
 cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
 cfg$recalibrate <- TRUE
 start_run(cfg=cfg,codeCheck=codeCheck)
-calib <- magpie4::submitCalibration(name = "calibration_sim4nexus_nov2020")
+calib <- magpie4::submitCalibration(name = "calibration_sim4nexus_jan2021")
 cfg$recalibrate <- "ifneeded"
 
 # Baseline scenario ###############################################
