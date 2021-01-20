@@ -68,7 +68,7 @@ general_settings<-function(title) {
 cfg<-general_settings(title="SSP2_NoCC_NoCC_NoMit_base")
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"nocc")
-cfg$input <- buildInputVector(regionmapping = "image10",calibration=NULL)
+cfg$input <- buildInputVector(regionmapping="image10",calibration=NULL)
 cfg$gms$c59_som_scenario  <- "nocc"
 cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
 cfg$recalibrate <- TRUE
