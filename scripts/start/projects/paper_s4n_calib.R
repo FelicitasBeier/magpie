@@ -75,3 +75,31 @@ cfg$recalibrate <- TRUE
 start_run(cfg=cfg,codeCheck=codeCheck)
 calib <- magpie4::submitCalibration(name = "calibration_sim4nexus_jan2021")
 cfg$recalibrate <- "ifneeded"
+
+# "Climate": 2 degree scenario
+cfg<-general_settings(title="CLIMATETEST")
+# CC mitigation (2degree scenario): cost-optimal mitigation pathway based on
+# endogenous trade and fertilization patterns, MAC-curves from Lucas et al. (2007)
+# for non-co2 ghg emissions, and endogenous mitigation for CO2 emissions from
+# landuse change and afforestation
+  # RCP 2.6
+  # CO2 emissions based on CO2 price
+  # non-CO2 ghg emissions based on CO2 eq price provided by IMAGE
+  # carbon price according to SSP2
+  # bioenergy demand from SSP2 RCP 2.6 scenario provided by IMAGE
+  # afforestation/avoided deforestation: all based on CO2 price and NDC
+  # 65% NUE croplands
+cfg<-gms::setScenario(cfg,"SSP2")
+cfg<-gms::setScenario(cfg,"cc")
+#cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
+cfg<-gms::setScenario(cfg,"NDC")
+cfg$input <- buildInputVector(climatescen_name="rcp2p6",regionmapping = "image10",calibration=calib)
+cfg$gms$c56_pollutant_prices <- "sim4nexus"              # def = R2M41-SSP2-NPi
+cfg$gms$c56_pollutant_prices_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
+cfg$gms$c56_s4n_scenario <- "SSP2_SPA2_26I_D"
+cfg$gms$c60_2ndgen_biodem <- "sim4nexus"              # def = R2M41-SSP2-NPi
+cfg$gms$c60_2ndgen_biodem_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
+cfg$gms$c60_s4n_scenario <- "SSP2_SPA2_26I_D"
+# increased fertilizer efficiency
+cfg$gms$c50_scen_neff <- "neff65_70_starty2010"       # def=neff60_60_starty2010
+start_run(cfg=cfg,codeCheck=codeCheck)
