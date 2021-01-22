@@ -77,7 +77,7 @@ calib <- magpie4::submitCalibration(name = "calibration_sim4nexus_jan2021")
 cfg$recalibrate <- "ifneeded"
 
 # "Climate": 2 degree scenario
-cfg<-general_settings(title="CLIMATETEST")
+cfg<-general_settings(title="LANDMATRIX")
 # CC mitigation (2degree scenario): cost-optimal mitigation pathway based on
 # endogenous trade and fertilization patterns, MAC-curves from Lucas et al. (2007)
 # for non-co2 ghg emissions, and endogenous mitigation for CO2 emissions from
@@ -91,9 +91,10 @@ cfg<-general_settings(title="CLIMATETEST")
   # 65% NUE croplands
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
-#cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
+cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
 cfg<-gms::setScenario(cfg,"NDC")
 cfg$input <- buildInputVector(climatescen_name="rcp2p6",regionmapping = "image10",calibration=calib)
+cfg$gms$land <- "feb15"
 cfg$gms$c56_pollutant_prices <- "sim4nexus"              # def = R2M41-SSP2-NPi
 cfg$gms$c56_pollutant_prices_noselect <- "sim4nexus"     # def = R2M41-SSP2-NPi
 cfg$gms$c56_s4n_scenario <- "SSP2_SPA2_26I_D"
