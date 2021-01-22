@@ -59,7 +59,7 @@ general_settings<-function(title) {
   cfg$gms$forestry  <- "dynamic_may20"
   cfg$gms$maccs  <- "on_sep16" # marginal abatement cost curves
   cfg$gms$factor_costs <- "fixed_per_ton_mar18"
-  cfg$title <- paste0("sim4nexus_v6_",title)
+  cfg$title <- paste0("sim4nexus_v7_",title)
   return(cfg)
 }
 
