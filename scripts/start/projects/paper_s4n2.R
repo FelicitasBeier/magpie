@@ -59,7 +59,7 @@ general_settings<-function(title) {
   cfg$gms$forestry  <- "dynamic_may20"
   cfg$gms$maccs  <- "on_sep16" # marginal abatement cost curves
   cfg$gms$factor_costs <- "fixed_per_ton_mar18"
-  cfg$title <- paste0("sim4nexus_v8_",title)
+  cfg$title <- paste0("carbonOFF_",title)
   return(cfg)
 }
 
@@ -102,7 +102,8 @@ cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_2p6_Mit2p6_climate")
   # 65% NUE croplands
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
-#cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
+cfg$gms$c59_som_scenario  <- "nocc"
+cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
 cfg<-gms::setScenario(cfg,"NDC")
 cfg$input <- buildInputVector(climatescen_name="rcp2p6",regionmapping = "image10",calibration=calib)
 cfg$gms$c56_pollutant_prices <- "sim4nexus"              # def = R2M41-SSP2-NPi
@@ -122,7 +123,8 @@ cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_6p0_NoMit_biodiversity")
 # RCP6.0
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
-#cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
+cfg$gms$c59_som_scenario  <- "nocc"
+cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
 cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "image10",calibration=calib)
 cfg$gms$c35_protect_scenario <- "HalfEarth"
 # strongly increased fertilizer efficiency
@@ -137,7 +139,8 @@ cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_6p0_NoMit_water")
   # Increased fertilizer efficiency (70% NUE of croplands)
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
-#cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
+cfg$gms$c59_som_scenario  <- "nocc"
+cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
 cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "image10",calibration=calib)
 cfg$gms$c42_env_flow_policy <- "on"
 # strongly increased fertilizer efficiency
@@ -151,7 +154,8 @@ cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_6p0_NoMit_food")
   # Waste: max waste of 15%
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
-#cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
+cfg$gms$c59_som_scenario  <- "nocc"
+cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
 cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "image10",calibration=calib)
 cfg$gms$c15_food_scenario <- "SSP1"
 cfg$gms$s15_exo_waste <- 1
@@ -166,7 +170,8 @@ cfg<-general_settings(title="SSP2_IPSL-CM5A-LR_2p6_Mit_combined")
 # All scenarios: combination of all scenarios
 cfg<-gms::setScenario(cfg,"SSP2")
 cfg<-gms::setScenario(cfg,"cc")
-#cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
+cfg$gms$c59_som_scenario  <- "nocc"
+cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
 cfg<-gms::setScenario(cfg,"NDC")
 cfg$input <- buildInputVector(climatescen_name="rcp2p6",regionmapping = "image10",calibration=calib)
 cfg$gms$c56_pollutant_prices <- "sim4nexus"              # def = R2M41-SSP2-NPi
