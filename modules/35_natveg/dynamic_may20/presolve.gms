@@ -75,6 +75,10 @@ $elseif "%c35_protect_scenario%" == "HalfEarth"
 * Note: Half Earth already contains WDPA protection
 p35_protect_shr(t,j,"HalfEarth")$(p35_protect_shr(t,j,"HalfEarth") < p35_protect_shr(t,j,"WDPA")) = p35_protect_shr(t,j,"WDPA");
 
+* Overwirte p35_protection_fader for s4n project only:
+p35_protection_fader(t)$(m_year(t)<2025)=0;
+p35_protection_fader(t)$(m_year(t)>=2025)=1;
+
 * half earth scenario begins fading in after 2020:
 p35_save_primforest(t,j) = (p35_protect_shr(t,j,"WDPA")+f35_protection_fader(t)*(p35_protect_shr(t,j,"HalfEarth")-p35_protect_shr(t,j,"WDPA")))*pm_land_start(j,"primforest");
 p35_save_secdforest(t,j) = (p35_protect_shr(t,j,"WDPA")+f35_protection_fader(t)*(p35_protect_shr(t,j,"HalfEarth")-p35_protect_shr(t,j,"WDPA")))*pm_land_start(j,"secdforest");
