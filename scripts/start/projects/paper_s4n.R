@@ -60,7 +60,7 @@ general_settings<-function(title) {
   cfg$gms$maccs  <- "on_sep16" # marginal abatement cost curves
   cfg$gms$factor_costs <- "fixed_per_ton_mar18"
   cfg$gms$s15_elastic_demand <- 1 # endogenous food demand
-  cfg$title <- paste0("sim4nexus_v9_",title)
+  cfg$title <- paste0("sim4nexus_v10_",title)
   return(cfg)
 }
 
