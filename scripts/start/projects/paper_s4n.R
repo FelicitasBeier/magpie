@@ -60,7 +60,7 @@ general_settings<-function(title) {
   cfg$gms$maccs  <- "on_sep16" # marginal abatement cost curves
   cfg$gms$factor_costs <- "fixed_per_ton_mar18"
   cfg$gms$s15_elastic_demand <- 1 # endogenous food demand
-  cfg$title <- paste0("sim4nexus_v10_",title)
+  cfg$title <- paste0("sim4nexus_v11_",title)
   return(cfg)
 }
 
@@ -159,7 +159,6 @@ cfg<-gms::setScenario(cfg,"cc")
 cfg$gms$c59_som_scenario  <- "nocc"    # with current LPJmL3 inputs, carbon must be switched off!
 cfg$gms$c52_carbon_scenario  <- "nocc" # with current LPJmL inputs, carbon must be switched off!
 cfg$input <- buildInputVector(climatescen_name="rcp6p0",regionmapping = "image10",calibration=calib)
-cfg$gms$c15_food_scenario <- "SSP1"
 cfg$gms$s15_exo_waste <- 1
 cfg$gms$s15_waste_scen <- 1.2
 cfg$gms$s15_exo_diet <- 1
@@ -185,7 +184,6 @@ cfg$gms$c60_s4n_scenario <- "SSP2_SPA2_26I_D"
 cfg$gms$c35_protect_scenario <- "HalfEarth"
 cfg$gms$c50_scen_neff <- "neff75_80_starty2010"
 cfg$gms$c42_env_flow_policy <- "on"
-cfg$gms$c15_food_scenario <- "SSP1"
 cfg$gms$s15_exo_waste <- 1
 cfg$gms$s15_waste_scen <- 1.2
 cfg$gms$s15_exo_diet <- 1
