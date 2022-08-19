@@ -24,7 +24,7 @@ for (scenarioName in c(
 #  "a_FairTrade", "a_TimberCities", "a_REDDaff", "a_REDD", "a_CropRotations",
   "a_LandSparing", #"a_WaterSparing", "a_PeatlandSparing", "a_AirPollution", "a_SoilCarbon",
   # Scenario combination runs
-  "c_BAU"#, "d_SSP1", "d_SSP3", "d_SSP4", "d_SSP5",
+  "c_BAU", #"d_SSP1", "d_SSP3", "d_SSP4", "d_SSP5",
   "e_FSDP"#,
 #  "b_ExternalPressures", "b_WaterSoil", "b_REDDaffDietRuminants", "b_DietRotations",
 #  "b_SoilMonogastric", "b_SoilRotations",
