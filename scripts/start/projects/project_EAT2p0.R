@@ -36,8 +36,6 @@ cfg$output <- c("output_check",
                 # add output file: pb_report (magpie (special mif created by getReportPBindicators & remind mif (REMIND_generic_scenName.mif))
                 "rds_report",
                 "projects/agmip_report")
-                "rds_report",
-                "projects/agmip_report")
 
 #######################
 # SCENARIO DEFINITION #
