@@ -36,6 +36,8 @@ cfg$output <- c("output_check",
                 # add output file: pb_report (magpie (special mif created by getReportPBindicators & remind mif (REMIND_generic_scenName.mif))
                 "rds_report",
                 "projects/agmip_report")
+                "rds_report",
+                "projects/agmip_report")
 
 #######################
 # SCENARIO DEFINITION #
@@ -82,7 +84,7 @@ bau <- function(cfg) {
   cfg$gms$c60_2ndgen_biodem    <- "R21M42-SSP2-NPi"      # default
 
   # Climate Change
-  cfg$input['cellular'] <- "rev4.99_h12_c6a7458f_cellularmagpie_c200_IPSL-CM6A-LR-ssp370_lpjml-8e6c5eb1.tgz"
+  cfg$input['cellular'] <- "rev4.109_h12_c6a7458f_cellularmagpie_c200_IPSL-CM6A-LR-ssp370_lpjml-8e6c5eb1.tgz"
 
   return(cfg)
 }
@@ -91,7 +93,11 @@ bau <- function(cfg) {
 # Globally achieves EL2 diet by 2050
 diet <- function(cfg) {
   # Transition towards EL2 food intake recommendations until 2050
+  # Transition towards EL2 food intake recommendations until 2050
   cfg$gms$s15_exo_diet  <- 3
+  # Physical inactivity levels are reduced to 0 from 2020 to 2050
+  cfg$gms$c09_pal_scenario <- "SDP"
+
   # Physical inactivity levels are reduced to 0 from 2020 to 2050
   cfg$gms$c09_pal_scenario <- "SDP"
 
@@ -134,7 +140,9 @@ waste <- function(cfg) {
 miti <- function(cfg) {
   # Mitigation: consistent with 1.5C considering diet change
   cfg$path_to_report_ghgprices <- "/p/projects/magpie/users/beier/EL2_DeepDive_default/remind/output/C_SSP2EU-DSPkB650-DS_betax_AgMIP-rem-5/REMIND_generic_C_SSP2EU-DSPkB500-noDS-rem-5.mif"
+  cfg$path_to_report_ghgprices <- "/p/projects/magpie/users/beier/EL2_DeepDive_default/remind/output/C_SSP2EU-DSPkB650-DS_betax_AgMIP-rem-5/REMIND_generic_C_SSP2EU-DSPkB500-noDS-rem-5.mif"
   cfg$gms$c56_pollutant_prices <- "coupling"
+  cfg$path_to_report_bioenergy <- "/p/projects/magpie/users/beier/EL2_DeepDive_default/remind/output/C_SSP2EU-DSPkB650-DS_betax_AgMIP-rem-5/REMIND_generic_C_SSP2EU-DSPkB500-noDS-rem-5.mif"
   cfg$path_to_report_bioenergy <- "/p/projects/magpie/users/beier/EL2_DeepDive_default/remind/output/C_SSP2EU-DSPkB650-DS_betax_AgMIP-rem-5/REMIND_generic_C_SSP2EU-DSPkB500-noDS-rem-5.mif"
   cfg$gms$c60_2ndgen_biodem    <- "coupling"
 
@@ -159,6 +167,9 @@ cfg$title <- "BAU"
 # standard setting
 cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
 # scenario settings
+# standard setting
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
+# scenario settings
 cfg <- bau(cfg = cfg)
 start_run(cfg, codeCheck = FALSE)
 
@@ -166,6 +177,9 @@ start_run(cfg, codeCheck = FALSE)
 # Decomposition scenario. Adds EL2.0 Diet to BAU:
 # Globally achieves EL2 diet by 2050              # To Do: Check implemention!
 cfg$title <- "BAU_DIET"
+# standard setting
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
+# scenario settings
 # standard setting
 cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
 # scenario settings
@@ -179,6 +193,9 @@ cfg$title <- "BAU_PROD"
 # standard setting
 cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
 # scenario settings
+# standard setting
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
+# scenario settings
 cfg <- bau(cfg = cfg)
 cfg <- prod(cfg = cfg)
 start_run(cfg, codeCheck = FALSE)
@@ -186,6 +203,9 @@ start_run(cfg, codeCheck = FALSE)
 # BAU_WAST #
 # Decomposition scenario. Adds a reduction (halving) of food loss and waste
 cfg$title <- "BAU_WAST"
+# standard setting
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
+# scenario settings
 # standard setting
 cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
 # scenario settings
@@ -199,6 +219,9 @@ cfg$title <- "BAU_RCP26"
 # standard setting
 cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
 # scenario settings
+# standard setting
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
+# scenario settings
 cfg <- bau(cfg = cfg)
 cfg <- rcp26(cfg = cfg)
 start_run(cfg, codeCheck = FALSE)
@@ -206,6 +229,9 @@ start_run(cfg, codeCheck = FALSE)
 # BAU_NoCC #
 # Decomposition scenario. Remove climate impacts (NoCC) from BAU to isolate climate effects
 cfg$title <- "BAU_NoCC"
+# standard setting, but without CC
+cfg <- setScenario(cfg, c("nocc_hist", "SSP2", "NPI"))
+# scenario settings
 # standard setting, but without CC
 cfg <- setScenario(cfg, c("nocc_hist", "SSP2", "NPI"))
 # scenario settings
@@ -218,6 +244,9 @@ cfg$title <- "BAU_MITI"
 # standard setting, but with NDC activated (for miti)
 cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
 # scenario settings
+# standard setting, but with NDC activated (for miti)
+cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
+# scenario settings
 cfg <- bau(cfg = cfg)
 cfg <- miti(cfg = cfg)
 start_run(cfg, codeCheck = FALSE)
@@ -225,6 +254,9 @@ start_run(cfg, codeCheck = FALSE)
 # EL2 #
 # Full EAT-Lancet Scenario (diet, productivity, FLW) without mitigation and higher climate impacts based on RCP 7.0
 cfg$title <- "EL2"
+# standard setting
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
+# scenario settings
 # standard setting
 cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
 # scenario settings
@@ -240,7 +272,11 @@ cfg$title <- "ELM"
 # standard setting, but with NDC activated (for miti)
 cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
 # scenario settings
+# standard setting, but with NDC activated (for miti)
+cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
+# scenario settings
 cfg <- bau(cfg = cfg)
+cfg <- miti(cfg = cfg)
 cfg <- miti(cfg = cfg)
 cfg <- diet(cfg = cfg)
 cfg <- prod(cfg = cfg)
@@ -254,7 +290,11 @@ cfg$title <- "ELM_DIET"
 # standard setting, but with NDC activated (for miti)
 cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
 # scenario settings
+# standard setting, but with NDC activated (for miti)
+cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
+# scenario settings
 cfg <- bau(cfg = cfg)
+cfg <- miti(cfg = cfg)
 cfg <- miti(cfg = cfg)
 cfg <- prod(cfg = cfg)
 cfg <- waste(cfg = cfg)
@@ -267,7 +307,11 @@ cfg$title <- "ELM_PROD"
 # standard setting, but with NDC activated (for miti)
 cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
 # scenario settings
+# standard setting, but with NDC activated (for miti)
+cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
+# scenario settings
 cfg <- bau(cfg = cfg)
+cfg <- miti(cfg = cfg)
 cfg <- miti(cfg = cfg)
 cfg <- diet(cfg = cfg)
 cfg <- waste(cfg = cfg)
@@ -280,7 +324,11 @@ cfg$title <- "ELM_WAST"
 # standard setting, but with NDC activated (for miti)
 cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
 # scenario settings
+# standard setting, but with NDC activated (for miti)
+cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
+# scenario settings
 cfg <- bau(cfg = cfg)
+cfg <- miti(cfg = cfg)
 cfg <- miti(cfg = cfg)
 cfg <- diet(cfg = cfg)
 cfg <- prod(cfg = cfg)
@@ -293,7 +341,11 @@ cfg$title <- "ELM_RCP70"
 # standard setting, but with NDC activated (for miti)
 cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
 # scenario settings
+# standard setting, but with NDC activated (for miti)
+cfg <- setScenario(cfg, c("cc", "SSP2", "NDC"))
+# scenario settings
 cfg <- bau(cfg = cfg)
+cfg <- miti(cfg = cfg)
 cfg <- miti(cfg = cfg)
 cfg <- diet(cfg = cfg)
 cfg <- prod(cfg = cfg)
@@ -303,6 +355,9 @@ start_run(cfg, codeCheck = FALSE)
 # ELM_NoCC #
 # Decomposition Scenario. Removes climate impacts (NoCC) from ELM
 cfg$title <- "ELM_NoCC"
+# standard setting, but with NDC activated (for miti) and without CC
+cfg <- setScenario(cfg, c("nocc_hist", "SSP2", "NDC"))
+# scenario settings
 # standard setting, but with NDC activated (for miti) and without CC
 cfg <- setScenario(cfg, c("nocc_hist", "SSP2", "NDC"))
 # scenario settings
