@@ -63,6 +63,10 @@ cfg <- setScenario(cfg, c("nocc_hist", "SSP2", "NPI", "EL2_default"))
 # RCP/GCM: 7p0 shocks on crops, livestock, labor
 # Trade: BAU
 bau <- function(cfg) {
+
+  # for feasibility
+  cfg$gms$s80_optfile <- 1
+
   cfg$gms$factor_costs <- "sticky_labor"
   ### Components for Decomposition ###
   # Diets: exogenous EATLancet diet

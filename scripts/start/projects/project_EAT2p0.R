@@ -52,6 +52,10 @@ cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
 # RCP/GCM: 7p0 shocks on crops, livestock, labor
 # Trade: BAU
 bau <- function(cfg) {
+
+  # for feasibility
+  cfg$gms$s80_optfile <- 1
+  
   ### General settings ###
   # For impacts of CC on labor:
   cfg$gms$factor_costs  <- "sticky_labor"
