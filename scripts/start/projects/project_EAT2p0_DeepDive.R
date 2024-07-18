@@ -65,7 +65,7 @@ cfg <- setScenario(cfg, c("nocc_hist", "SSP2", "NPI", "EL2_default"))
 bau <- function(cfg) {
 
   # time steps until 2150
-  gms$c_timesteps <- "less_TS"
+  cfg$gms$c_timesteps <- "less_TS"
 
   # for feasibility
   cfg$gms$s80_optfile <- 1
