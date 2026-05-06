@@ -1,0 +1,4 @@
+name,type,reason
+im_pop_iso,par,not_needed
+im_gdp_pc_mer,par,not_needed
+im_development_state,par,not_needed
