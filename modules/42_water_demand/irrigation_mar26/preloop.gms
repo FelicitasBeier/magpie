@@ -10,6 +10,21 @@ i42_env_flows(t,j) = f42_env_flows(t,j);
 
 i42_wat_req_k(t,j,kli) = f42_wat_req_kli(kli);
 
+* Fixed country weights for country-selection logic.
+* Use baseline irrigation water availability in the initial year.
+* Weight is fixed to y1995, EFP = off, non-agricultural water demand scenario = ssp2.
+p42_wat_avl_weight_iso(iso) =
+  sum(pww43$(sameas(pww43,"ren_ag") OR sameas(pww43,"nonren_ag")),
+    f42_wat_avl_iso("y1995",iso,"off","ssp2",pww43));
+
+p42_wat_avl_weight_reg(i) =
+  sum(i_to_iso(i,iso), p42_wat_avl_weight_iso(iso));
+
+* Diagnostic output only for first-run assessment. Remove before merging.
+p42_wat_avl_weight_iso_zero(iso) = 1$(p42_wat_avl_weight_iso(iso) = 0);
+p42_wat_avl_weight_reg_zero(i) = 1$(p42_wat_avl_weight_reg(i) = 0);
+display p42_wat_avl_weight_iso_zero, p42_wat_avl_weight_reg_zero;
+
 * Trajectory for environmental flow policy
 * (linear interpolation from start year to target year)
 p42_EFP(t_all,"off") = 0;

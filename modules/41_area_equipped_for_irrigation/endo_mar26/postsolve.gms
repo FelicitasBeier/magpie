@@ -1,0 +1,47 @@
+*** |  (C) 2008-2025 Potsdam Institute for Climate Impact Research (PIK)
+*** |  authors, and contributors see CITATION.cff file. This file is part
+*** |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
+*** |  AGPL-3.0, you are granted additional permissions described in the
+*** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
+*** |  Contact: magpie@pik-potsdam.de
+
+pc41_AEI_start(j) = vm_AEI.l(j);
+
+*#################### R SECTION START (OUTPUT DEFINITIONS) #####################
+ ov_cost_AEI(t,i,"marginal")     = vm_cost_AEI.m(i);
+ ov_AEI(t,j,"marginal")          = vm_AEI.m(j);
+ ov41_AEI_maintenance(t,j,"marginal")    = v41_AEI_maintenance.m(j);
+ ov41_AEI_expansion(t,j,"marginal")      = v41_AEI_expansion.m(j);
+ oq41_area_irrig(t,j,"marginal") = q41_area_irrig.m(j);
+ oq41_pia(t,j,"marginal")                 = q41_pia.m(j);
+ oq41_AEI_balance(t,j,"marginal")         = q41_AEI_balance.m(j);
+ oq41_AEI_maintenance_cap(t,j,"marginal") = q41_AEI_maintenance_cap.m(j);
+ oq41_cost_AEI(t,i,"marginal")   = q41_cost_AEI.m(i);
+ ov_cost_AEI(t,i,"level")        = vm_cost_AEI.l(i);
+ ov_AEI(t,j,"level")             = vm_AEI.l(j);
+ ov41_AEI_maintenance(t,j,"level")       = v41_AEI_maintenance.l(j);
+ ov41_AEI_expansion(t,j,"level")         = v41_AEI_expansion.l(j);
+ oq41_area_irrig(t,j,"level")    = q41_area_irrig.l(j);
+ oq41_pia(t,j,"level")                    = q41_pia.l(j);
+ oq41_AEI_balance(t,j,"level")            = q41_AEI_balance.l(j);
+ oq41_AEI_maintenance_cap(t,j,"level")    = q41_AEI_maintenance_cap.l(j);
+ oq41_cost_AEI(t,i,"level")      = q41_cost_AEI.l(i);
+ ov_cost_AEI(t,i,"upper")        = vm_cost_AEI.up(i);
+ ov_AEI(t,j,"upper")             = vm_AEI.up(j);
+ ov41_AEI_maintenance(t,j,"upper")       = v41_AEI_maintenance.up(j);
+ ov41_AEI_expansion(t,j,"upper")         = v41_AEI_expansion.up(j);
+ oq41_area_irrig(t,j,"upper")    = q41_area_irrig.up(j);
+ oq41_pia(t,j,"upper")                    = q41_pia.up(j);
+ oq41_AEI_balance(t,j,"upper")            = q41_AEI_balance.up(j);
+ oq41_AEI_maintenance_cap(t,j,"upper")    = q41_AEI_maintenance_cap.up(j);
+ oq41_cost_AEI(t,i,"upper")      = q41_cost_AEI.up(i);
+ ov_cost_AEI(t,i,"lower")        = vm_cost_AEI.lo(i);
+ ov_AEI(t,j,"lower")             = vm_AEI.lo(j);
+ ov41_AEI_maintenance(t,j,"lower")       = v41_AEI_maintenance.lo(j);
+ ov41_AEI_expansion(t,j,"lower")         = v41_AEI_expansion.lo(j);
+ oq41_area_irrig(t,j,"lower")    = q41_area_irrig.lo(j);
+ oq41_pia(t,j,"lower")                    = q41_pia.lo(j);
+ oq41_AEI_balance(t,j,"lower")            = q41_AEI_balance.lo(j);
+ oq41_AEI_maintenance_cap(t,j,"lower")    = q41_AEI_maintenance_cap.lo(j);
+ oq41_cost_AEI(t,i,"lower")      = q41_cost_AEI.lo(i);
+*##################### R SECTION END (OUTPUT DEFINITIONS) ######################

@@ -12,31 +12,35 @@ parameters
  i42_env_flows_base(t,j)                   Environmental flow requirements in case of no policy (mio m^3)
  ic42_env_flow_policy(i)                   Determines whether environmental flow protection is enforced in the current time step (1)
  i42_env_flow_policy(t,i)                  Determines whether environmental flow protection is enforced (1)
- p42_EFP(t_all,EFP)                     Determines whether environmental flow protection is enforced and its fading in of environmental flow policy (1)
+ p42_EFP(t_all,EFP)                        Determines whether environmental flow protection is enforced and its fading in of environmental flow policy (1)
  p42_EFP_fader(t_all)                      Determines the fading in of environmental flow policy (1)
- p42_country_switch(iso)                    Switch indicating whether country is affected by EFP (1)
- p42_EFP_region_shr(t_all,i)               Weighted share of region with regards to EFP (1)
- ic42_pumping_cost(i)                      Parameter to capture values for pumping costs in a particular time step (USD17MER per m^3)
+ p42_wat_avl_weight_iso(iso)               Fixed country weights for country-to-region aggregation based on water availability (1)
+ p42_wat_avl_weight_reg(i)                 Regional sum of fixed water-availability weights (1)
+ p42_wat_avl_weight_iso_zero(iso)          Diagnostic flag for ISO countries with zero water-availability weight (1)
+ p42_wat_avl_weight_reg_zero(i)            Diagnostic flag for regions with zero water-availability weight (1)
+ p42_country_switch_EFP(iso)               Switch indicating whether country is affected by EFP (1)
+ p42_country_switch_wprice(iso)            Switch indicating whether country is affected by water pricing (1)
+ p42_EFP_region_shr(i)                     Weighted share of region with regards to EFP (1)
+ p42_wprice_region_shr(i)                  Weighted share of region with regards to water pricing (1)
+ ic42_water_price(i)                       Effective volumetric water price in current time step (USD17MER per m^3)
  i42_watdem_total(t,j,watdem_ineldo,wtype) Non-agricultural water demand for entire year used in post-processing (mio. m^3 per yr)
 ;
 
 equations
  q42_water_demand(wat_dem,j)           Water withdrawals of different sectors (mio. m^3 per yr)
- q42_water_cost(i)                     Total cost of pumping irrigation water (mio. USD17MER per yr)
+ q42_water_cost(i)                     Total cost of volumetric agricultural water pricing (mio. USD17MER per yr)
 ;
 
 positive variables
-  vm_watdem(wat_dem,j)               Amount of water needed in different sectors (mio. m^3 per yr)
-  v42_irrig_eff(j)                   Irrigation efficiency (1)
-  vm_water_cost(i)                   Cost of irrigation water (mio. USD17MER per yr)
+ vm_watdem(wat_dem,j)               Amount of water needed in different sectors (mio. m^3 per yr)
+ vm_water_cost(i)                   Cost of volumetric agricultural water pricing (mio. USD17MER per yr)
 ;
 
 *#################### R SECTION START (OUTPUT DECLARATIONS) ####################
 parameters
  ov_watdem(t,wat_dem,j,type)         Amount of water needed in different sectors (mio. m^3 per yr)
- ov42_irrig_eff(t,j,type)            Irrigation efficiency (1)
- ov_water_cost(t,i,type)             Cost of irrigation water (USD17MER per m^3)
+ ov_water_cost(t,i,type)             Cost of volumetric agricultural water pricing (mio. USD17MER per yr)
  oq42_water_demand(t,wat_dem,j,type) Water withdrawals of different sectors (mio. m^3 per yr)
- oq42_water_cost(t,i,type)           Total cost of pumping irrigation water (USD17MER per yr)
+ oq42_water_cost(t,i,type)           Total cost of volumetric agricultural water pricing (mio. USD17MER per yr)
 ;
 *##################### R SECTION END (OUTPUT DECLARATIONS) #####################

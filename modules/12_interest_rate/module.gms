@@ -14,7 +14,7 @@
 *' one-time investments over several time steps (e.g. in the modules 
 *' [13_tc], [39_landconversion] and [41_area_equipped_for_irrigation]).
 *'
-*' @authors Xiaoxi Wang
+*' @authors Xiaoxi Wang, Felicitas Beier
 
 *###################### R SECTION START (MODULETYPES) ##########################
 $Ifi "%interest_rate%" == "select_apr20" $include "./modules/12_interest_rate/select_apr20/realization.gms"

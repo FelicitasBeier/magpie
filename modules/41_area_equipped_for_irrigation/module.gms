@@ -12,9 +12,10 @@
 *' the evolution of areas equipped for irrigation. The module receives information about
 *' the area actually irrigated from the [30_crop] module.
 *'
-*' @authors Anne Biewald, Markus Bonsch, Christoph Schmitz
+*' @authors Anne Biewald, Markus Bonsch, Christoph Schmitz, Felicitas Beier
 
 *###################### R SECTION START (MODULETYPES) ##########################
 $Ifi "%area_equipped_for_irrigation%" == "endo_apr13" $include "./modules/41_area_equipped_for_irrigation/endo_apr13/realization.gms"
+$Ifi "%area_equipped_for_irrigation%" == "endo_mar26" $include "./modules/41_area_equipped_for_irrigation/endo_mar26/realization.gms"
 $Ifi "%area_equipped_for_irrigation%" == "static" $include "./modules/41_area_equipped_for_irrigation/static/realization.gms"
 *###################### R SECTION END (MODULETYPES) ############################

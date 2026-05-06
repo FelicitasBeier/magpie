@@ -7,15 +7,19 @@
 
 *' @title Water availability 
 *'
-*' @description The water availability module determines the water that is available 
-*' in MAgPIE. The following water sources are currently implemented: surface water, 
-*' groundwater, technical (like desalination etc.). Additionally, 
-*' this module includes the main water constraint that requires water withdrawals 
-*' to be smaller or equal to available water. Information is passed to and received 
-*' from the [42_water_demand] module.
+*' @description The water availability module constrains freshwater availability 
+*' for irrigation in MAgPIE based on potential irrigation water withdrawals 
+*' determined in the water flow accumulation algorithm mrwater [@beier_technical_2023] 
+*' based on annual runoff from a natural vegetation run from LPJmL [@vonBloh_implementing_2018].
+*' This includes surface water runoff and shallow renewable groundwater.
+*' Currently observed excessive water withdrawals in the initialization year
+*' beyond locally available renewable freshwater resources are accounted for as 
+*' non-renewable groundwater [@beier_irrigation_2026].
+*' Information is passed to and received from the [42_water_demand] module.
 *'
-*' @authors Anne Biewald, Markus Bonsch
+*' @authors Anne Biewald, Markus Bonsch, Felicitas Beier
 
 *###################### R SECTION START (MODULETYPES) ##########################
 $Ifi "%water_availability%" == "total_water_aug13" $include "./modules/43_water_availability/total_water_aug13/realization.gms"
+$Ifi "%water_availability%" == "pot_irrig_water_mar26" $include "./modules/43_water_availability/pot_irrig_water_mar26/realization.gms"
 *###################### R SECTION END (MODULETYPES) ############################

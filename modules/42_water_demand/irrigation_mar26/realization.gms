@@ -7,10 +7,11 @@
 
 *' @description
 *'
-*' This realization models agricultural sector water withdrawals endogenously,
-*' as described in the first realization.
-*' Manufacturing, electricity and domestic demand are explicitly accounted for in various scenarios;
-*' Various settings (same as in previous realization) for environmental water demand described below.
+*' This realization models agricultural sector water withdrawals endogenously.
+*' Manufacturing, electricity and domestic water usage are given by exogenous scenarios
+*' and can be chosen by the user via scenario switches.
+*'
+*' Similarly, various switches are available for environmental flow protection.
 *'
 *' *Agricultural water demand*:
 *'
@@ -27,18 +28,12 @@
 *' * SSP2
 *' * SSP3
 *'
-*' Due to the fact that MAgPIE only considers available blue water during the
-*' growing period of the plants ([43_water_availability]), the fraction of this
-*' demand in the growing period is determined in the preprocessing assuming
-*' constant demand over the whole year. The matching of the WATERGAP scenarios
-*' to the MAgPIE scenarios can be found in the file `scenario_config.csv` in the
-*' config folder of model.
 *'
 *' *Environmental water demand*:
 *'
 *' Environmental water requirements can be specified separately using the switch
 *' `s42_env_flow_scenario`. The following settings are available:
-*'
+**** To Do: Decide which scenarios to keep (currently: "on" vs. "off" in mrwater)
 *' * No additional environmental flows are considered.
 *' * A certain fraction of available water `s42_env_flow_fraction` is reserved
 *'   for environmental purposes and consequently not available for agricultural
@@ -51,24 +46,21 @@
 *'   `s42_protected_fraction`. In the case of the absence of an environmental
 *'   flow protection policy, a base protection can be specified:
 *'   `s42_env_flow_base_fraction`. It defaults to 5 % of available water.
-*'
+*** To Do: Decide whether to keep this. And how: is there an option to switch from off to on over time combinging two PIWWs?
 *' The speed of transitioning to full environmental flow protection is determined
 *' by specifying the start (`s42_EFP_startyear`) and target (`s42_EFP_targetyear`) year.
 *'
-*' @limitations The module uses the "conveyance efficiency times management
-*' factor" for irrigation efficiency. Therefore, the management factor is
-*' accounted twice, since it is already considered in LPJmL water quantity used
-*' for irrigation (`airrig`: annual irrigation). Furthermore, the module
-*' realization does not consider annual water balances but only water balances
-*' during the growing period of crops. This period differs between cells.
+*' @limitations Water usage and efficiency are calculated in the preprocessing
+*' to ensure spatial cell water balance water balance consistency.
+*' Therefore, settings are prescribed and cannot be flexibly adjusted during MAgPIE runtime. 
 
 *####################### R SECTION START (PHASES) ##############################
-$Ifi "%phase%" == "sets" $include "./modules/42_water_demand/all_sectors_aug13/sets.gms"
-$Ifi "%phase%" == "declarations" $include "./modules/42_water_demand/all_sectors_aug13/declarations.gms"
-$Ifi "%phase%" == "input" $include "./modules/42_water_demand/all_sectors_aug13/input.gms"
-$Ifi "%phase%" == "equations" $include "./modules/42_water_demand/all_sectors_aug13/equations.gms"
-$Ifi "%phase%" == "scaling" $include "./modules/42_water_demand/all_sectors_aug13/scaling.gms"
-$Ifi "%phase%" == "preloop" $include "./modules/42_water_demand/all_sectors_aug13/preloop.gms"
-$Ifi "%phase%" == "presolve" $include "./modules/42_water_demand/all_sectors_aug13/presolve.gms"
-$Ifi "%phase%" == "postsolve" $include "./modules/42_water_demand/all_sectors_aug13/postsolve.gms"
+$Ifi "%phase%" == "sets" $include "./modules/42_water_demand/irrigation_mar26/sets.gms"
+$Ifi "%phase%" == "declarations" $include "./modules/42_water_demand/irrigation_mar26/declarations.gms"
+$Ifi "%phase%" == "input" $include "./modules/42_water_demand/irrigation_mar26/input.gms"
+$Ifi "%phase%" == "equations" $include "./modules/42_water_demand/irrigation_mar26/equations.gms"
+$Ifi "%phase%" == "scaling" $include "./modules/42_water_demand/irrigation_mar26/scaling.gms"
+$Ifi "%phase%" == "preloop" $include "./modules/42_water_demand/irrigation_mar26/preloop.gms"
+$Ifi "%phase%" == "presolve" $include "./modules/42_water_demand/irrigation_mar26/presolve.gms"
+$Ifi "%phase%" == "postsolve" $include "./modules/42_water_demand/irrigation_mar26/postsolve.gms"
 *######################## R SECTION END (PHASES) ###############################

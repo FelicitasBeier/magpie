@@ -5,13 +5,10 @@
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
 
-i42_wat_req_k(t,j,kve) = f42_wat_req_kve(t,j,kve);
-i42_env_flows(t,j) = f42_env_flows(t,j);
+*' @equations
 
-i42_wat_req_k(t,j,kli) = f42_wat_req_kli(kli);
+*' Water withdrawals for agriculture cannot exceed available water 
+*' for agricultural purposes from all sources.
 
-* Trajectory for environmental flow policy
-* (linear interpolation from start year to target year)
-p42_EFP(t_all,"off") = 0;
-m_linear_time_interpol(p42_EFP_fader, s42_EFP_startyear, s42_EFP_targetyear, 0, 1);
-p42_EFP(t_all, "on") = p42_EFP_fader(t_all);
+ q43_water_availability(j2)  ..
+   vm_watdem("agriculture",j2) =l= sum(wat_source43,v43_watavail(j2,wat_source43))  ;

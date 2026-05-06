@@ -29,8 +29,8 @@ s42_env_flow_scenario            EFP scenario.     (1)          / 2 /
 *                                                                          s42_env_flow_fraction has no effect.
 
 * Linear fading in of environmental flow policy between startyear and targetyear
-s42_efp_startyear                  Environmental flow policy start year   / 2025 /
-s42_efp_targetyear                 Environmental flow policy target year  / 2040 /
+s42_EFP_startyear                  Environmental flow policy start year   / 2025 /
+s42_EFP_targetyear                 Environmental flow policy target year  / 2040 /
 
 s42_env_flow_base_fraction         Fraction of available water that is reserved for the environment where no EFP policy is implemented (1) / 0.05 /
 s42_env_flow_fraction              Fraction of available water that is reserved for under protection policies (1) / 0.2 /

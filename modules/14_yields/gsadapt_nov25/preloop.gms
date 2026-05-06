@@ -107,6 +107,9 @@ i14_yields_calib_combined(t,j,yldtype,"betr",w) = i14_yields_combined(t,j,yldtyp
                                                     sum((supreg(h,i),cell(i,j)),fm_tau1995(h))/smax(h,fm_tau1995(h));
 *******************************************************************************************
 
+*** QUESTION: would it make sense to add the 10**(-8) already above in line 63 (to modeled_yields_hist) and 90/94 (to i14_fao_yields_hist) 
+***           and line 53/54 (to i14_yields_combined) to make this easier readable and to avoid introducing any distortion?
+
 i14_managementcalib(t,j,yldtype,knbe14,w) =
    1 + (sum(cell(i,j), i14_fao_yields_hist(t,i,knbe14) - i14_modeled_yields_hist(t,i,yldtype,knbe14)) /
                             i14_yields_combined(t,j,yldtype,knbe14,w) *

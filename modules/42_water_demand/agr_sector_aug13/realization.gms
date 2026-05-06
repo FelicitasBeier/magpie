@@ -70,7 +70,7 @@
 *' Whether a potential EFP policy takes effect is determined by the parameter
 *' `f42_env_flow_policy`.
 *' The speed of transitioning to full environmental flow protection is determined
-*' by specifying the start (`s42_efp_startyear`) and target (`s42_efp_targetyear`) year.
+*' by specifying the start (`s42_EFP_startyear`) and target (`s42_EFP_targetyear`) year.
 *'
 *' @limitations The module uses the "conveyance efficiency times management
 *' factor" for irrigation efficiency. Therefore, the management factor is

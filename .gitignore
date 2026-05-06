@@ -40,3 +40,10 @@ gamslice.txt
 
 /renv.lock
 .Rproj.user
+
+#ignore renv file
+renv/activate.R
+
+#ignore magpie-agent files
+/magpie-agent/
+AGENT.md

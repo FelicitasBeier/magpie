@@ -5,20 +5,10 @@
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
 
+$setglobal cm_env_flow_policy off
+$setglobal cm_watdem_nonagr_scenario ssp2
+
 scalars
-s42_watdem_nonagr_scenario         Scenario for non agricultural water demand from WATERGAP     (1)             / 2 /
-*                                                                                1: SSP1
-*                                                                                2: SSP2
-*                                                                                3: SSP3
-
-s42_irrig_eff_scenario             Scenario for irrigation efficiency      (1)      / 2 /
-*                                      1: global static value
-*                                      2: regional static values from CS
-*                                      3: gdp driven increase
-
-s42_irrigation_efficiency          Value of irrigation efficiency         (1)      / 0.66 /
-*                                      Only if global static value is requested
-
 s42_env_flow_scenario              Environmental flow protection scenario         (1)      / 2 /
 *                                  0: don't consider environmental flows.
 *                                                                          s42_env_flow_base_fraction and
@@ -36,9 +26,8 @@ s42_EFP_startyear                  Environmental flow policy start year   / 2025
 s42_EFP_targetyear                 Environmental flow policy target year  / 2040 /
 s42_env_flow_base_fraction         Fraction of available water that is reserved for the environment if no EFR protection policy is implemented (1)           / 0.05 /
 s42_env_flow_fraction              Fraction of available water that is reserved under protection policies (1) / 0.2 /
-s42_pumping                        Switch to activate pumping cost settings (1) / 0 /
-s42_multiplier_startyear           Year from which pumping costs multiplier will be implemented (1) / 1995 /
-s42_multiplier                     multiplier to change pumping costs for sensitivity analysis takes numeric values (1)  / 0 /
+s42_water_price                    Volumetric price for agricultural water withdrawals (USD17MER per m^3) / 0 /
+s42_water_price_startyear          Year from which volumetric water pricing is implemented / 2025 /
 ;
 
 $setglobal c42_watdem_scenario  cc
@@ -49,41 +38,30 @@ $setglobal c42_watdem_scenario  cc
 * Set-switch for countries affected by EFP
 * Default: all iso countries selected
 sets
-  EFP_countries(iso) countries to be affected by EFP / ABW,AFG,AGO,AIA,ALA,ALB,AND,ARE,ARG,ARM,
-                      ASM,ATA,ATF,ATG,AUS,AUT,AZE,BDI,BEL,BEN,
-                      BES,BFA,BGD,BGR,BHR,BHS,BIH,BLM,BLR,BLZ,
-                      BMU,BOL,BRA,BRB,BRN,BTN,BVT,BWA,CAF,CAN,
-                      CCK,CHN,CHE,CHL,CIV,CMR,COD,COG,COK,COL,
-                      COM,CPV,CRI,CUB,CUW,CXR,CYM,CYP,CZE,DEU,
-                      DJI,DMA,DNK,DOM,DZA,ECU,EGY,ERI,ESH,ESP,
-                      EST,ETH,FIN,FJI,FLK,FRA,FRO,FSM,GAB,GBR,
-                      GEO,GGY,GHA,GIB,GIN,GLP,GMB,GNB,GNQ,GRC,
-                      GRD,GRL,GTM,GUF,GUM,GUY,HKG,HMD,HND,HRV,
-                      HTI,HUN,IDN,IMN,IND,IOT,IRL,IRN,IRQ,ISL,
-                      ISR,ITA,JAM,JEY,JOR,JPN,KAZ,KEN,KGZ,KHM,
-                      KIR,KNA,KOR,KWT,LAO,LBN,LBR,LBY,LCA,LIE,
-                      LKA,LSO,LTU,LUX,LVA,MAC,MAF,MAR,MCO,MDA,
-                      MDG,MDV,MEX,MHL,MKD,MLI,MLT,MMR,MNE,MNG,
-                      MNP,MOZ,MRT,MSR,MTQ,MUS,MWI,MYS,MYT,NAM,
-                      NCL,NER,NFK,NGA,NIC,NIU,NLD,NOR,NPL,NRU,
-                      NZL,OMN,PAK,PAN,PCN,PER,PHL,PLW,PNG,POL,
-                      PRI,PRK,PRT,PRY,PSE,PYF,QAT,REU,ROU,RUS,
-                      RWA,SAU,SDN,SEN,SGP,SGS,SHN,SJM,SLB,SLE,
-                      SLV,SMR,SOM,SPM,SRB,SSD,STP,SUR,SVK,SVN,
-                      SWE,SWZ,SXM,SYC,SYR,TCA,TCD,TGO,THA,TJK,
-                      TKL,TKM,TLS,TON,TTO,TUN,TUR,TUV,TWN,TZA,
-                      UGA,UKR,UMI,URY,USA,UZB,VAT,VCT,VEN,VGB,
-                      VIR,VNM,VUT,WLF,WSM,YEM,ZAF,ZMB,ZWE /
+  EFP_countries(iso) countries to be affected by EFP
+                      / #iso /
+  water_pricing_countries(iso) countries to be affected by volumetric water pricing
+                      / #iso /
 ;
 
-table f42_wat_req_kve(t_all,j,kve) LPJ annual water demand for irrigation per ha (m^3 per yr)
+***To Do: with multiple cropping update: new set with off and main season water demand
+table f42_wat_req_kve(t_all,j,kve) Annual crop water requirements for irrigation as withdrawals per ha (m^3 per yr)
 $ondelim
-$include "./modules/42_water_demand/input/lpj_airrig.cs2"
+$include "./modules/42_water_demand/irrigation_mar26/input/irrig_req_crop.cs2"
 $offdelim
 ;
 $if "%c42_watdem_scenario%" == "nocc" f42_wat_req_kve(t_all,j,kve) = f42_wat_req_kve("y1995",j,kve);
 $if "%c42_watdem_scenario%" == "nocc_hist" f42_wat_req_kve(t_all,j,kve)$(m_year(t_all) > sm_fix_cc) = f42_wat_req_kve(t_all,j,kve)$(m_year(t_all) = sm_fix_cc);
 m_fillmissingyears(f42_wat_req_kve,"j,kve");
+
+table f42_wat_avl_iso(t_all,iso,EFP,scen_watdem_nonagr,pww43) ISO-level water availability for different purposes (mio. m^3 per yr)
+$ondelim
+$include "./modules/42_water_demand/irrigation_mar26/input/pot_irr_wat_iso.cs3"
+$offdelim
+;
+$if "%c42_watdem_scenario%" == "nocc" f42_wat_avl_iso(t_all,iso,EFP,scen_watdem_nonagr,pww43) = f42_wat_avl_iso("y1995",iso,EFP,scen_watdem_nonagr,pww43);
+$if "%c42_watdem_scenario%" == "nocc_hist" f42_wat_avl_iso(t_all,iso,EFP,scen_watdem_nonagr,pww43)$(m_year(t_all) > sm_fix_cc) = f42_wat_avl_iso(t_all,iso,EFP,scen_watdem_nonagr,pww43)$(m_year(t_all) = sm_fix_cc);
+m_fillmissingyears(f42_wat_avl_iso,"iso,EFP,scen_watdem_nonagr,pww43");
 
 parameter f42_wat_req_kli(kli) Average water requirements of livestock commodities per region per tDM per year (m^3 per yr)
 /
@@ -119,15 +97,3 @@ $offdelim
 $if "%c42_watdem_scenario%" == "nocc" f42_env_flows(t_all,j) = f42_env_flows("y1995",j);
 $if "%c42_watdem_scenario%" == "nocc_hist" f42_env_flows(t_all,j)$(m_year(t_all) > sm_fix_cc) = f42_env_flows(t_all,j)$(m_year(t_all) = sm_fix_cc);
 m_fillmissingyears(f42_env_flows,"j");
-
-$setglobal c42_env_flow_policy  off
-
-* Costs of pumping are calculated for India as per methodology in forthcoming paper by Singh et.al.
-parameter
-f42_pumping_cost(t_all,i) Cost of pumping irrigation water (USD17MER per m^3)
-/
-$ondelim
-$include "./modules/42_water_demand/input/f42_pumping_cost.cs4"
-$offdelim
-/
-;

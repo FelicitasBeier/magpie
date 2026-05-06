@@ -5,13 +5,4 @@
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
 
-i42_wat_req_k(t,j,kve) = f42_wat_req_kve(t,j,kve);
-i42_env_flows(t,j) = f42_env_flows(t,j);
-
-i42_wat_req_k(t,j,kli) = f42_wat_req_kli(kli);
-
-* Trajectory for environmental flow policy
-* (linear interpolation from start year to target year)
-p42_EFP(t_all,"off") = 0;
-m_linear_time_interpol(p42_EFP_fader, s42_EFP_startyear, s42_EFP_targetyear, 0, 1);
-p42_EFP(t_all, "on") = p42_EFP_fader(t_all);
+vm_cost_AEI.scale(i) = 10e4;

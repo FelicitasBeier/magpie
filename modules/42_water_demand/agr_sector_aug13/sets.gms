@@ -12,12 +12,9 @@ sets
    watdem_ineldo(wat_dem) Exogenous water demand subset covering humanly induced demands
    / domestic, manufacturing, electricity /
 
-   scen42 Environmental Flow Policy (EFP)
-   / off, on /
-
-   scen42_to_dev(scen42,dev) Mapping between EFP and economic development status
+   EFP_to_dev(EFP,dev) Mapping between EFP and economic development status
    /  off . (lic, mic)
-    on  . (hic) /
+      on  . (hic) /
 
    wtype Water abstraction type 
    / consumption, withdrawal /
