@@ -1,0 +1,6 @@
+name,type,reason
+sm_fix_SSP2,input,not needed in off realization
+sm_fix_cc,input,not needed in off realization
+pm_interest,input,not needed in off realization
+vm_prod,input,not needed in off realization
+vm_area,input,not needed in off realization

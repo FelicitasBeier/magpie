@@ -31,11 +31,6 @@ equations
  q42_water_cost(i)                     Total cost of volumetric agricultural water pricing (mio. USD17MER per yr)
 ;
 
-positive variables
- vm_watdem(wat_dem,j)               Amount of water needed in different sectors (mio. m^3 per yr)
- vm_water_cost(i)                   Cost of volumetric agricultural water pricing (mio. USD17MER per yr)
-;
-
 *#################### R SECTION START (OUTPUT DECLARATIONS) ####################
 parameters
  ov_watdem(t,wat_dem,j,type)         Amount of water needed in different sectors (mio. m^3 per yr)

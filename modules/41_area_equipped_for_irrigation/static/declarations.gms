@@ -5,14 +5,6 @@
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
 
-variables
- vm_cost_AEI(i)                  Irrigation expansion costs (mio. USD17MER)
-;
-
-positive variables
- vm_AEI(j)                       Area equipped for irrigation in each grid cell (mio. ha)
-;
-
 equations
  q41_area_irrig(j)               Irrigation area constraint (mio. ha)
 ;

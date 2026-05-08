@@ -206,6 +206,7 @@ $setglobal processing  substitution_may21
 
 $setglobal trade  selfsuff_reduced
 $setglobal land_conservation  area_based_apr22
+$setglobal irrigation  pot_irrig_may26
 
 $setglobal ageclass  oct24
 
@@ -224,9 +225,9 @@ $setglobal factor_costs  sticky_feb18
 $setglobal landconversion  calib
 
 $setglobal transport  gtap_nov12
-$setglobal area_equipped_for_irrigation  endo_mar26
-$setglobal water_demand  irrigation_mar26
-$setglobal water_availability  pot_irrig_water_mar26
+$setglobal area_equipped_for_irrigation  off
+$setglobal water_demand  off
+$setglobal water_availability  off
 $setglobal biodiversity  bii_target
 $setglobal climate  static
 

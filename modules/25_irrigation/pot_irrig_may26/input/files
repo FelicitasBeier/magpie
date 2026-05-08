@@ -1,0 +1,7 @@
+* list of files that are required here
+f25_irrig_unit_cost.csv
+area_irrig_ini.cs2
+area_pot_irrig.cs3
+irrig_req_crop.cs2
+pot_irr_wat_iso.cs3
+pot_irr_wat.cs3

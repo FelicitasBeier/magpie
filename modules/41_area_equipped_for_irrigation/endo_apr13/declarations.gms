@@ -11,14 +11,6 @@ parameters
  pc41_unitcost_AEI(i)            Unit cost of AEI expansion (USD17MER per ha)
  ;
 
-variables
- vm_cost_AEI(i)                  Annuitized irrigation expansion costs (mio. USD17MER per yr)
-;
-
-positive variables
- vm_AEI(j)                       Area equipped for irrigation in each grid cell (mio. ha)
-;
-
 equations
  q41_area_irrig(j)               Irrigation area constraint (mio. ha)
  q41_cost_AEI(i)                 Calculation of costs of irrigation area expansion (mio. USD17MER)

@@ -12,12 +12,7 @@ parameters
  p41_PIA(t_all,j)                Potentially irrigated areas (mio. ha)
  ;
 
-variables
- vm_cost_AEI(i)                  Annuitized irrigation expansion costs (mio. USD17MER per yr)
-;
-
 positive variables
- vm_AEI(j)                       Area equipped for irrigation (mio. ha)
  v41_AEI_maintenance(j)          Area equipped for irrigation to be maintained (mio. ha)
  v41_AEI_expansion(j)            Area newly equipped for irrigation (mio. ha)
 ;

@@ -18,6 +18,7 @@
 *' @authors Anne Biewald, Markus Bonsch, Felicitas Beier
 
 *###################### R SECTION START (MODULETYPES) ##########################
+$Ifi "%water_demand%" == "off" $include "./modules/42_water_demand/off/realization.gms"
 $Ifi "%water_demand%" == "agr_sector_aug13" $include "./modules/42_water_demand/agr_sector_aug13/realization.gms"
 $Ifi "%water_demand%" == "all_sectors_aug13" $include "./modules/42_water_demand/all_sectors_aug13/realization.gms"
 $Ifi "%water_demand%" == "irrigation_mar26" $include "./modules/42_water_demand/irrigation_mar26/realization.gms"
