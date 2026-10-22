@@ -55,31 +55,31 @@ sets
       VEN, VGB, VIR, VNM, VUT, WLF, WSM, YEM, ZAF, ZMB, ZWE /
 
   j number of LPJ cells
-    / CAZ_1*CAZ_11,
-      CHA_12*CHA_29,
-      EUR_30*EUR_43,
-      IND_44*IND_59,
-      JPN_60*JPN_68,
-      LAM_69*LAM_96,
-      MEA_97*MEA_111,
-      NEU_112*NEU_122,
-      OAS_123*OAS_153,
-      REF_154*REF_165,
-      SSA_166*SSA_186,
+    / CAZ_1*CAZ_14,
+      CHA_15*CHA_31,
+      EUR_32*EUR_43,
+      IND_44*IND_57,
+      JPN_58*JPN_65,
+      LAM_66*LAM_99,
+      MEA_100*MEA_117,
+      NEU_118*NEU_126,
+      OAS_127*OAS_153,
+      REF_154*REF_164,
+      SSA_165*SSA_186,
       USA_187*USA_200 /
 
   cell(i,j) number of LPJ cells per region i
-    / CAZ . (CAZ_1*CAZ_11)
-      CHA . (CHA_12*CHA_29)
-      EUR . (EUR_30*EUR_43)
-      IND . (IND_44*IND_59)
-      JPN . (JPN_60*JPN_68)
-      LAM . (LAM_69*LAM_96)
-      MEA . (MEA_97*MEA_111)
-      NEU . (NEU_112*NEU_122)
-      OAS . (OAS_123*OAS_153)
-      REF . (REF_154*REF_165)
-      SSA . (SSA_166*SSA_186)
+    / CAZ . (CAZ_1*CAZ_14)
+      CHA . (CHA_15*CHA_31)
+      EUR . (EUR_32*EUR_43)
+      IND . (IND_44*IND_57)
+      JPN . (JPN_58*JPN_65)
+      LAM . (LAM_66*LAM_99)
+      MEA . (MEA_100*MEA_117)
+      NEU . (NEU_118*NEU_126)
+      OAS . (OAS_127*OAS_153)
+      REF . (REF_154*REF_164)
+      SSA . (SSA_165*SSA_186)
       USA . (USA_187*USA_200) /
 
   i_to_iso(i,iso) mapping regions to iso countries
@@ -263,7 +263,7 @@ sets
         / primforest, secdforest, other /
 
   forest_type forest type
-        / plantations, natveg /
+        / plantations, natveg, other_planted /
 
 ***Forestry**
   ac Age classes  / ac0,ac5,ac10,ac15,ac20,ac25,ac30,ac35,ac40,ac45,ac50,

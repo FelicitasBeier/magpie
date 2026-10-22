@@ -8,131 +8,156 @@
 # ----------------------------------------------------------
 # description: Test new lpjml version in magpie
 # ----------------------------------------------------------
+## Load lucode2 and gms to use setScenario later
+library(lucode2)
+library(gms)
 
-######################################
-#### Script to start a MAgPIE run ####
-######################################
 # Load start_run(cfg) function which is needed to start MAgPIE runs
 source("scripts/start_functions.R")
 
 # source default configuration
 source("config/default.cfg")
-title <- "l2m_feb26"
-cfg$recalibrate_landconversion_cost <- "ifneeded" #### Should I change this to TRUE?
+title <- "LPJmL5_sep26"
+cfg$recalibrate_landconversion_cost <- TRUE
 
-##############################################
-### Current default (i.e., old lpjml data) ###
-##############################################
-cfg$gms$yields <- "managementcalib_aug19"
-cfg$gms$tc     <- "endo_jan22"
+#################
+#### Default ####
+#################
+cfg$title <- paste0(title, "_Default")
 
-# RCP2.6
-cfg$title <- paste0(title, "_Default_mngtcalib_", "rcp26")
-cfg$input <- c(regional    = "rev4.130l2m_default_feb2026_h12_magpie.tgz",
-               cellular    = "rev4.130l2m_default_feb2026_h12_6819938d_cellularmagpie_c200_MRI-ESM2-0-ssp126_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.130l2m_default_feb2026_h12_92e02314_validation.tgz",
-               additional  = "additional_data_rev4.63.tgz",
-               calibration = "calibration_H12_FAO_18Sep25.tgz")      #### Do I need to change this when I recalibrate?
-# start MAgPIE run
-start_run(cfg, codeCheck = TRUE)
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
 
-# RCP7.0
-cfg$title <- paste0(title, "_Default_mngtcalib_", "rcp70")
-cfg$input <- c(regional    = "rev4.130l2m_default_feb2026_h12_magpie.tgz",
-               cellular    = "rev4.130l2m_default_feb2026_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.130l2m_default_feb2026_h12_92e02314_validation.tgz",
-               additional  = "additional_data_rev4.63.tgz",
-               calibration = "calibration_H12_FAO_18Sep25.tgz")      #### Do I need to change this when I recalibrate?
-# start MAgPIE run
-start_run(cfg, codeCheck = TRUE)
+start_run(cfg, codeCheck = FALSE)
 
-#####################
-### Newlpjml data ###
-#####################
+#####################################
+#### Different Climate Scenarios ####
+#####################################
+# rcp 1.9
+cfg$title <- paste0(title, "_RCP1.9")
 
-### Different RCPs (2x) ###
-for (rcp in c("2p6", "7p0")) {
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp1p9"))
 
-    if (rcp == "2p6") {
-        # RCP2.6
-        cfg$input <- c(regional    = "rev4.130l2m_v5-10-0m2_feb2026_h12_magpie.tgz",
-                       cellular    = "rev4.130l2m_v5-10-0m2_feb2026_h12_e3aebc2e_cellularmagpie_c200_MRI-ESM2-0-ssp126_lpjml-a0c283bd.tgz",
-                       validation  = "rev4.130l2m_v5-10-0m2_feb2026_h12_92e02314_validation.tgz",
-                       additional  = "additional_data_rev4.63.tgz",
-                       calibration = "calibration_H12_FAO_18Sep25.tgz")      #### Do I need to change this when I recalibrate?
-    } else if (rcp == "7p0") {
-        # RCP7.0
-        cfg$input <- c(regional    = "rev4.130l2m_v5-10-0m2_feb2026_h12_magpie.tgz",
-                       cellular    = "rev4.130l2m_v5-10-0m2_feb2026_h12_00e02813_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-a0c283bd.tgz",
-                       validation  = "rev4.130l2m_v5-10-0m2_feb2026_h12_92e02314_validation.tgz",
-                       additional  = "additional_data_rev4.63.tgz",
-                       calibration = "calibration_H12_FAO_18Sep25.tgz")      #### Do I need to change this when I recalibrate?
-    } else {
-      stop("selected rcp not available")
-    }
+start_run(cfg, codeCheck = FALSE)
 
-    ### Different realizations (2x) ###
-    for (realization in c("mngt", "gsadapt")) {
+# rcp 2.6
+cfg$title <- paste0(title, "_RCP2.6")
 
-        if (realization == "mngt") {
-        # default realizations
-        cfg$gms$yields <- "managementcalib_aug19"
-        cfg$gms$tc     <- "endo_jan22"
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp2p6"))
 
-        # title 
-        cfg$title <- paste0(title, "_LPJmL5-10-0m2", "_", "rcp", rcp, "_", realization)
-        # start MAgPIE run
-        start_run(cfg, codeCheck = TRUE)
+start_run(cfg, codeCheck = FALSE)
 
-        } else if (realization == "gsadapt") {
-        # new realizations
-        cfg$gms$yields <- "gsadapt_nov25"
-        cfg$gms$tc     <- "endo_nov25"
+# rcp 4.5
+cfg$title <- paste0(title, "_RCP4.5")
 
-        for (gsadapt in c("const", "adapt")) {
-            if (gsadapt == "const") {
-                # no growing period adaptation
-                cfg$gms$s14_use_gsadapt <- 0
-                cfg$gms$s14_gsadapt2tau <- 0
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp4p5"))
 
-                # title 
-                cfg$title <- paste0(title, "_LPJmL5-10-0m2", "_", "rcp", rcp, "_", realization, "_gs", gsadapt)
-                # start MAgPIE run
-                start_run(cfg, codeCheck = TRUE)
+start_run(cfg, codeCheck = FALSE)
 
-            } else if (gsadapt == "adapt") {
+# rcp 6.0
+cfg$title <- paste0(title, "_RCP6.0")
 
-                for (tauspillover in c("TCspill0", "TCspill1")) {
-                  if (tauspillover == "TCspill0") {
-                    # growing period adaptation
-                    cfg$gms$s14_use_gsadapt <- 1
-                    cfg$gms$s14_gsadapt2tau <- 0
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp6p0"))
 
-                    # title 
-                    cfg$title <- paste0(title, "_LPJmL5-10-0m2", "_", "rcp", rcp, "_", realization, "_gs", gsadapt, tauspillover)
-                    # start MAgPIE run
-                    start_run(cfg, codeCheck = TRUE)
+start_run(cfg, codeCheck = FALSE)
 
-                  } else if (tauspillover == "TCspill1") {
-                    # growing period adaptation
-                    cfg$gms$s14_use_gsadapt <- 1
-                    cfg$gms$s14_gsadapt2tau <- 1
+# rcp 7.0
+cfg$title <- paste0(title, "_RCP7.0")
 
-                    # title 
-                    cfg$title <- paste0(title, "_LPJmL5-10-0m2", "_", "rcp", rcp, "_", realization, "_gs", gsadapt, tauspillover)
-                    # start MAgPIE run
-                    start_run(cfg, codeCheck = TRUE)
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp7p0"))
 
-                  } else {
-                    stop("Selected tauspillover is not available.")
-                  }
-                }
-            } else {
-                stop("gsadapt setting does not exist")
-            }
-        }
-        } else {
-          stop("selected realization is not available.")
-        }
-    }
-}
+start_run(cfg, codeCheck = FALSE)
+
+# rcp 8.5
+cfg$title <- paste0(title, "_RCP8.5")
+
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp8p5"))
+
+start_run(cfg, codeCheck = FALSE)
+
+# overshoot 
+cfg$title <- paste0(title, "_RCP3p4-overshoot")
+
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI"))
+input['cellular'] <- "rev4.134beier-2026-09-16T104204_h12_c5ad1e2c_cellularmagpie_c200_MRI-ESM2-0-ssp534-over_lpjml-501e8913.tgz"
+
+start_run(cfg, codeCheck = FALSE)
+
+######################
+#### New Switches ####
+######################
+
+# set input back to default
+input['cellular'] <- "rev4.134beier-2026-09-16T104204_h12_bb6334c1_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-501e8913.tgz"
+
+# No growing period adaptation 
+cfg$title <- paste0(title, "_Nogsadapt")
+
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp4p5"))
+cfg$gms$s14_use_gsadapt <- 0
+cfg$gms$s14_gsadapt2tau <- 0
+
+start_run(cfg, codeCheck = FALSE)
+
+
+# Growing period adaptation free of charge
+cfg$title <- paste0(title, "_GsadaptFree")
+
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp4p5"))
+cfg$gms$s14_use_gsadapt <- 1
+cfg$gms$s14_gsadapt2tau <- 0
+
+start_run(cfg, codeCheck = FALSE)
+
+
+# Growing period adaptation with costs
+cfg$title <- paste0(title, "_GsadaptAtTauCost")
+
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp4p5"))
+cfg$gms$s14_use_gsadapt <- 1
+cfg$gms$s14_gsadapt2tau <- 1
+
+start_run(cfg, codeCheck = FALSE)
+
+
+
+#######################################
+#### climate impacts in SSP3 world ####
+#######################################
+
+# SSP3_Base
+cfg$title <- paste0(title, "_SSP3_Base")
+
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp4p5"))
+cfg <- setScenario(cfg, c("SSP3_Base"), scenario_config = "config/projects/scenario_config_impacts.csv")
+
+start_run(cfg, codeCheck = FALSE)
+
+# SSP3_GrowON
+cfg$title <- paste0(title, "_SSP3_GrowON")
+
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp4p5"))
+cfg <- setScenario(cfg, c("SSP3_GrowON"), scenario_config = "config/projects/scenario_config_impacts.csv")
+
+start_run(cfg, codeCheck = FALSE)
+
+# SSP3_IrrigON
+cfg$title <- paste0(title, "_SSP3_IrrigON")
+
+# standard settings
+cfg <- setScenario(cfg, c("cc", "SSP2", "NPI", "rcp4p5"))
+cfg <- setScenario(cfg, c("SSP3_IrrigON"), scenario_config = "config/projects/scenario_config_impacts.csv")
+
+start_run(cfg, codeCheck = FALSE)
