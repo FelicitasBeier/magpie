@@ -217,7 +217,7 @@ $setglobal irrigation  pot_irrig_may26
 $setglobal ageclass  oct24
 
 $setglobal cropland  detail_apr24
-$setglobal croparea  simple_apr24
+$setglobal croparea  penalties_sep26
 $setglobal past  endo_jun13
 
 $setglobal forestry  dynamic_may24
