@@ -34,23 +34,9 @@
 *' Manufacturing, electricity and domestic water withdrawals are given by exogenous scenarios
 *' provided by [@wada_modeling_2016] and can be chosen by the user via scenario switches.
 *'
-*' Similarly, various switches are available for environmental flow protection. (To Do: need to change this)
-**** To Do: Decide which scenarios to keep (currently: "on" vs. "off" in mrwater)
-*' * No additional environmental flows are considered.
-*' * A certain fraction of available water `s25_env_flow_fraction` is reserved
-*'   for environmental purposes and consequently not available for agricultural
-*'   activities.
-*' * Environmental flow requirements (EFR) are calculated from LPJmL inputs
-*'   according to an algorithm by @smakhtin_water_2004 on cluster level. Due to
-*'   the fact that MAgPIE only considers available blue water during the growing
-*'   period of the plants [43_water_availability], EFR are also only calculated
-*'   during this growing period. These are reserved in addition to
-*'   baseline environmental protection. In the case of the absence of an environmental
-*'   flow protection policy, a base protection can be specified:
-*'   `s25_env_flow_base_fraction`. It defaults to 5 % of available water.
-*** To Do: Decide whether to keep this. And how: is there an option to switch from off to on over time combinging two PIWWs?
-*' The speed of transitioning to full environmental flow protection is determined
-*' by specifying the start (`s25_EFP_startyear`) and target (`s25_EFP_targetyear`) year.
+*' Environmental flow protection (EFP) and non-agricultural water demand are part of
+*' the water scenarios from mrwater, which are selected via `c25_water_scenario`.
+*** To Do: Fade-in of scenarios in GAMS (share of ssp2 and selected scenario) and documentation (stage 2)
 *'
 *' *Water availability for irrigation*:
 *' Water availability for irrigation is based on potential irrigation water withdrawals 

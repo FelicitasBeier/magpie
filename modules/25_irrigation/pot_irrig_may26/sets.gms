@@ -21,15 +21,15 @@ sets
   watdem_ineldo25(wat_dem) Exogenous water demand subset covering humanly induced demands
        / domestic, manufacturing, electricity /
 
+  scen25 Water scenarios from mrwater combining environmental flow protection and non-agricultural water demand
+       / ssp1, ssp2, ssp2efp, ssp3 /
+
   scen_watdem_nonagr25 Scenarios for non agricultural water demand
        / ISIMIP, ssp1, ssp2, ssp3 /
 
-  EFP25 Environmental Flow Policy (EFP)
-       / off, on /
-
-  EFP_to_dev25(EFP25,dev) Mapping between EFP and economic development status
-       / off . (lic, mic)
-         on  . (hic) /
+*** To Do: remove with new non-agricultural water input from mrwater (stage 2)
+  scen25_to_watdem_nonagr25(scen25,scen_watdem_nonagr25) Mapping between water scenario and non-agricultural water demand scenario
+       / ssp1 . ssp1, ssp2 . ssp2, ssp2efp . ssp2, ssp3 . ssp3 /
 
   wtype25 Water abstraction type
        / consumption, withdrawal /

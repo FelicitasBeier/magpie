@@ -7,3 +7,7 @@
 
 *' @description Off realization used when the combined irrigation module
 *' [25_irrigation] is active.
+
+*########################## R SECTION START (PHASES) ###########################
+*########################### R SECTION END (PHASES) ############################
+

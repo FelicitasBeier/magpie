@@ -13,14 +13,24 @@
 source("scripts/start_functions.R")
 source("config/default.cfg")
 
+# mrwater preprocessing to be tested (e.g. "", "bugfix2_", "bugfix3_")
+mrwRev <- "bugfix3_"
+# input data with mrwater integration
+inputMrwater <- c(regional    = paste0("rev4.139mrwater_L2M_", mrwRev, "h12_magpie.tgz"),
+                  cellular    = paste0("rev4.139mrwater_L2M_", mrwRev,
+                                       "h12_bb6334c1_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-501e8913.tgz"),
+                  validation  = paste0("rev4.139mrwater_L2M_", mrwRev, "h12_92e02314_validation.tgz"),
+                  additional  = "additional_data_rev4.78.tgz",
+                  calibration = "calibration_H12_FAO_04Nov26.tgz")
+
 # old realizations
 cfg$title <- "default_ir2rfOff"
 # new lpjml data without mrwater integration
-cfg$input <- c(regional    = "rev4.130l2m_v5-10-0m2_feb2026_h12_magpie.tgz",
-               cellular    = "rev4.130l2m_v5-10-0m2_feb2026_h12_e3aebc2e_cellularmagpie_c200_MRI-ESM2-0-ssp126_lpjml-a0c283bd.tgz",
-               validation  = "rev4.130l2m_v5-10-0m2_feb2026_h12_92e02314_validation.tgz",
-               additional  = "additional_data_rev4.63.tgz",
-               calibration = "calibration_H12_FAO_18Sep25.tgz")  
+cfg$input <- c(regional    = "rev4.139L2M_h12_magpie.tgz",
+               cellular    = "rev4.139L2M_h12_bb6334c1_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-501e8913.tgz",
+               validation  = "rev4.139L2M_h12_92e02314_validation.tgz",
+               additional  = "additional_data_rev4.78.tgz",
+               calibration = "calibration_H12_FAO_04Nov26.tgz")
 
 # old default realizations
 cfg$gms$area_equipped_for_irrigation <- "endo_apr13" 
@@ -33,13 +43,9 @@ start_run(cfg)
 
 
 # old realizations
-cfg$title <- "default_mrwaterinput_ir2rfOff_v5"
+cfg$title <- paste0("default_mrwaterinput_", mrwRev, "ir2rfOff")
 # new lpjml data with mrwater integration
-cfg$input <- c(regional    = "rev4.130mrwater_lpjml5-10-0m2_v5_h12_magpie.tgz",
-               cellular    = "rev4.130mrwater_lpjml5-10-0m2_v4_h12_00e02813_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-a0c283bd.tgz",
-               validation  = "rev4.130mrwater_lpjml5-10-0m2_v4_h12_92e02314_validation.tgz",
-               additional  = "additional_data_rev4.63.tgz",
-               calibration = "calibration_H12_FAO_18Sep25.tgz")
+cfg$input <- inputMrwater
 
 # old default realizations
 cfg$gms$area_equipped_for_irrigation <- "endo_apr13" 
@@ -52,20 +58,17 @@ start_run(cfg)
 
 
 # new realization with new module 
-cfg$title <- "mrwater_integration_module25"
+cfg$title <- paste0("mrwater_integration_", mrwRev, "module25")
 # new lpjml data with mrwater integration
-cfg$input <- c(regional    = "rev4.130mrwater_lpjml5-10-0m2_v5_h12_magpie.tgz",
-               cellular    = "rev4.130mrwater_lpjml5-10-0m2_v4_h12_00e02813_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-a0c283bd.tgz",
-               validation  = "rev4.130mrwater_lpjml5-10-0m2_v4_h12_92e02314_validation.tgz",
-               additional  = "additional_data_rev4.63.tgz",
-               calibration = "calibration_H12_FAO_18Sep25.tgz")
+cfg$input <- inputMrwater
 
 # deactivate old module
 cfg$gms$area_equipped_for_irrigation <- "off" 
 cfg$gms$water_demand <- "off" 
 cfg$gms$water_availability <- "off" 
 # activate new module
-cfg$gms$irrigation <- "pot_irrig_may26"   
+cfg$gms$irrigation <- "pot_irrig_may26"
+cfg$gms$c25_water_scenario <- "ssp2"
 cfg$gms$s14_calib_ir2rf <- 0
 
 start_run(cfg)

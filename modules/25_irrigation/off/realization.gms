@@ -12,4 +12,5 @@
 
 *####################### R SECTION START (PHASES) ##############################
 $Ifi "%phase%" == "declarations" $include "./modules/25_irrigation/off/declarations.gms"
+$Ifi "%phase%" == "postsolve" $include "./modules/25_irrigation/off/postsolve.gms"
 *######################## R SECTION END (PHASES) ###############################
