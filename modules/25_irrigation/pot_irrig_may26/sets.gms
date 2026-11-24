@@ -18,25 +18,24 @@ sets
   watdem_exo25(wat_dem) Exogenous water demand
        / domestic, manufacturing, electricity, ecosystem /
 
-  watdem_ineldo25(wat_dem) Exogenous water demand subset covering humanly induced demands
-       / domestic, manufacturing, electricity /
-
   scen25 Water scenarios from mrwater combining environmental flow protection and non-agricultural water demand
-       / ssp1, ssp2, ssp2efp, ssp3 /
+       / ssp1, ssp2, ssp2efp, ssp2strict, ssp3 /
 
-  scen_watdem_nonagr25 Scenarios for non agricultural water demand
-       / ISIMIP, ssp1, ssp2, ssp3 /
+  clim25 Climate scenarios of the mrwater water inputs
+       / cc, nocc_hist /
 
-*** To Do: remove with new non-agricultural water input from mrwater (stage 2)
-  scen25_to_watdem_nonagr25(scen25,scen_watdem_nonagr25) Mapping between water scenario and non-agricultural water demand scenario
-       / ssp1 . ssp1, ssp2 . ssp2, ssp2efp . ssp2, ssp3 . ssp3 /
+  nonag25 Non-agricultural water use types from mrwater
+       / demand, served_ren, unmet /
+
+  nonren25 Non-renewable groundwater pool by use
+       / nonren_ag, nonren_nonAg /
+
+  harm25 Harmonization settings of the mrwater inputs
+       / harmonization_year /
 
   wtype25 Water abstraction type
        / consumption, withdrawal /
 
   wat_source25 Freshwater sources available for agricultural usage
        / renewable, non_renewable, technical /
-
-  pww25 Potential water withdrawals for agriculture non-renewable groundwater reserved and water reserved for agriculture
-       / ren_ag, nonren_ag, res_nonAg /
 ;

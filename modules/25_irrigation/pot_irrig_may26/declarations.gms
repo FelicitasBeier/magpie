@@ -19,11 +19,12 @@ parameters
  p25_AEI_start(t,j)                               Area equipped for irrigation at the beginning of each time step (mio. ha)
  pc25_AEI_start(j)                                Area equipped for irrigation at the beginning of current time step (mio. ha)
  p25_unitcost_AEI(i,invtype25)                    Unit cost of AEI expansion and maintenance (USD17MER per ha)
+ i25_AEI_depr_share(t)                            Share of AEI at the beginning of the time step that depreciates during the time step (1)
  p25_PIA(t_all,j)                                 Potentially irrigated areas (mio. ha)
  i25_wat_req_k(t_all,j,k)                         LPJmL annual water demand for irrigation per ha per yr and livestock demand per ton per yr (m^3)
  ic25_wat_req_k(j,k)                              Current-timestep water demand coefficient (m^3)
  ic25_water_price(i)                              Effective volumetric water price in current time step (USD17MER per m^3)
- i25_watdem_total(t,j,watdem_ineldo25,wtype25)    Non-agricultural water demand for entire year used in post-processing (mio. m^3 per yr)
+ i25_wat_nonag(t,j,nonag25,wtype25)               Non-agricultural water demand and its supply in the selected scenario (mio. m^3 per yr)
  i25_wat_avail(t,j,wat_source25)                  Water availability for agriculture in the selected water scenario (mio. m^3 per yr)
 ;
 

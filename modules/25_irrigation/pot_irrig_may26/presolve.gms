@@ -17,22 +17,11 @@ if (m_year(t) >= s25_water_price_startyear,
   ic25_water_price(i) = s25_water_price;
 );
 
-* Water withdrawals in manufacturing, electricity, domestic
-* depend on the socioeconomic scenario.
-*** To Do: replace by consistent non-agricultural water use from mrwater (stage 2, D40)
-if (m_year(t) <= sm_fix_SSP2,
-  vm_watdem.fx(watdem_ineldo25,j) = f25_watdem_ineldo(t,j,"ssp2",watdem_ineldo25,"withdrawal");
-  i25_watdem_total(t,j,watdem_ineldo25,wtype25) = f25_watdem_ineldo_total(t,j,"ssp2",watdem_ineldo25,wtype25);
-else
-  vm_watdem.fx(watdem_ineldo25,j) = sum(scen25_to_watdem_nonagr25("%c25_water_scenario%",scen_watdem_nonagr25),
-                                      f25_watdem_ineldo(t,j,scen_watdem_nonagr25,watdem_ineldo25,"withdrawal"));
-  i25_watdem_total(t,j,watdem_ineldo25,wtype25) = sum(scen25_to_watdem_nonagr25("%c25_water_scenario%",scen_watdem_nonagr25),
-                                                      f25_watdem_ineldo_total(t,j,scen_watdem_nonagr25,watdem_ineldo25,wtype25));
-);
-
-* Environmental flow requirements are not reported for now.
-*** To Do: fix to environmental flow requirements of the selected water scenario from mrwater (stage 2, backlog 15)
-vm_watdem.fx("ecosystem",j) = 0;
+* Non-agricultural water use and environmental flow requirements are accounted for in mrwater
+* (already subtracted from the water available for agriculture) and do not enter module 25 constraints.
+* Non-agricultural totals are reported via i25_wat_nonag; no sector split yet.
+*** To Do: sector split of non-agricultural water use for reporting (sector shares from mrwater)
+vm_watdem.fx(watdem_exo25,j) = 0;
 
 v25_watavail.fx(j,"renewable") = i25_wat_avail(t,j,"renewable");
 v25_watavail.fx(j,"non_renewable") = i25_wat_avail(t,j,"non_renewable");

@@ -17,16 +17,17 @@ q25_pia(j2) ..
   sum(kcr, vm_area(j2,kcr,"irrigated")) =l= sum(ct, p25_PIA(ct,j2));
 
 *' Area equipped for irrigation can be expanded endogenously, but is also exposed to depreciation
-*' by a fraction that can be chosen by the user (`s25_AEI_depreciation)
+*' by an annual rate that can be chosen by the user (`s25_AEI_depreciation`). Depreciated AEI is lost unless it is
+*' maintained (rehabilitated). There is no depreciation in the initialization time step.
 q25_AEI_balance(j2)..
   vm_AEI(j2) =e=
-    ((1 - s25_AEI_depreciation)**(m_timestep_length)) * pc25_AEI_start(j2)
+    (1 - sum(ct, i25_AEI_depr_share(ct))) * pc25_AEI_start(j2)
     + v25_AEI_maintenance(j2)
     + v25_AEI_expansion(j2);
 
 q25_AEI_maintenance_cap(j2)..
   v25_AEI_maintenance(j2) =l=
-      (1 - ((1 - s25_AEI_depreciation) ** m_timestep_length)) * pc25_AEI_start(j2);
+      sum(ct, i25_AEI_depr_share(ct)) * pc25_AEI_start(j2);
 
 *' Irrigation expansion requires investment that is associated with investment costs that differ by region.
 *' They area parametrized based on data by [inocencio_costs_2007].

@@ -14,7 +14,7 @@
 *' Irrigation expansion is determined endogenously, 
 *' i.e. by expanding area equipped for irrigation (AEI).
 *' Initial values for AEI are areas that are irrigated in the initial time step according to LandInG [@ostberg_landing_2023].
-*' Depreciation of AEI can be set via `s25_AEI_depreciation`.
+*' Depreciation of AEI can be set via `s25_AEI_depreciation` (annual rate; not applied in the initialization time step).
 *' Irrigated crop production can only take place where irrigation infrastructure is present
 *' and where irrigation is possible based on local water availability following the rule of 
 *' the hydro-economic algorithm mrwater using LPJmL data (@beier_technical_2023).
@@ -31,11 +31,12 @@
 *' Water withdrawals for the agricultural sector are modeled endogenously
 *' based on irrigated cropland `vm_area(j,kcr,"irrigated")` 
 *' and livestock production `vm_prod(j,kli)`.
-*' Manufacturing, electricity and domestic water withdrawals are given by exogenous scenarios
-*' provided by [@wada_modeling_2016] and can be chosen by the user via scenario switches.
-*'
-*' Environmental flow protection (EFP) and non-agricultural water demand are part of
+*' Non-agricultural water use (manufacturing, electricity, domestic) and environmental flow
+*' protection (EFP) are accounted for in the mrwater river routing and are part of
 *' the water scenarios from mrwater, which are selected via `c25_water_scenario`.
+*' Water reserved for these uses is not available for agriculture.
+*' Non-agricultural demand, demand served from renewable sources and unmet demand
+*' are passed through for reporting (totals, no sector split yet).
 *** To Do: Fade-in of scenarios in GAMS (share of ssp2 and selected scenario) and documentation (stage 2)
 *'
 *' *Water availability for irrigation*:
@@ -45,13 +46,13 @@
 *' It includes renewable freshwater resources, i.e. runoff generated from precipitation 
 *' and snowfall. Assuming a long-term water balance, all runoff is assumed to enter rivers, 
 *' neglecting temporal groundwater recharge dynamics. 
-*' Currently observed excessive water withdrawals in the initialization year
-*' beyond locally available renewable freshwater resources are accounted for as 
-*' non-renewable groundwater [@beier_irrigation_2026].
+*' Historical water withdrawals beyond locally available renewable freshwater resources
+*' are accounted for as non-renewable groundwater [@beier_irrigation_2026]
+*' (until the harmonization year, constant afterwards).
+*' The non-renewable groundwater pool for agriculture is available in all water scenarios.
+*' Potentially irrigated areas include areas irrigated with non-renewable groundwater.
 *'
-*' There is an interface to the [42_water_demand] module. If exogenous
-*' non-agricultural water demand exceeds available water the missing amount is available
-*' from groundwater to avoid infeasibility.
+*' The climate scenario of all mrwater inputs is selected via `c25_climate_scenario`.
 
 *' @limitations Water usage and efficiency are calculated in the preprocessing (mrwater)
 *' to ensure spatial cell water balance consistency.
