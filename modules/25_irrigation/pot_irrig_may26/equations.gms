@@ -48,8 +48,8 @@ q25_water_demand("agriculture",j2) ..
     sum(kcr, vm_area(j2,kcr,"irrigated") * ic25_wat_req_k(j2,kcr))
   + sum(kli, vm_prod(j2,kli) * ic25_wat_req_k(j2,kli));
 
-*' Volumetric water pricing in agricultural sector can be chosen by the user.
-*** To Do: implement time frame for this
+*' Volumetric water pricing in agricultural sector can be chosen by the user
+*' (`s25_water_price`, from `s25_water_price_startyear` on).
 q25_water_cost(i2) ..
   vm_water_cost(i2) =e= sum(cell(i2,j2), vm_watdem("agriculture",j2)) * ic25_water_price(i2);
 

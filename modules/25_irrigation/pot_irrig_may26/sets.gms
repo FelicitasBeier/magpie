@@ -9,13 +9,10 @@ sets
   t_ini25  Time periods with area equipped for irrigation initialization data
        / y1995, y2000, y2005, y2010, y2015 /
 
-  aei25    Data source for area equipped for irrigation
-       / LUH3, Mehta2024_Siebert2013, Mehta2024_Meier2018 /
-
   invtype25 Type of irrigation investment
        / expansion, maintenance /
 
-  watdem_exo25(wat_dem) Exogenous water demand
+  watdem_exo25(wat_dem) Non-agricultural water demand sectors (accounted for in mrwater and fixed to zero here)
        / domestic, manufacturing, electricity, ecosystem /
 
   scen25 Water scenarios from mrwater combining environmental flow protection and non-agricultural water demand
@@ -37,5 +34,5 @@ sets
        / consumption, withdrawal /
 
   wat_source25 Freshwater sources available for agricultural usage
-       / renewable, non_renewable, technical /
+       / renewable, non_renewable /
 ;

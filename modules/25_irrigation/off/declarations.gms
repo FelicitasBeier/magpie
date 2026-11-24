@@ -1,3 +1,9 @@
+* With module 25 off, modules 41, 42 and 43 must be active
+* (otherwise vm_cost_AEI and vm_water_cost are unbounded)
+$ifi "%area_equipped_for_irrigation%" == "off" $abort "Module 25 is off: area_equipped_for_irrigation must not be off"
+$ifi "%water_demand%" == "off" $abort "Module 25 is off: water_demand must not be off"
+$ifi "%water_availability%" == "off" $abort "Module 25 is off: water_availability must not be off"
+
 variables
  vm_cost_AEI(i)                    Annuitized irrigation expansion costs (mio. USD17MER per yr)
  vm_water_cost(i)                  Cost of volumetric agricultural water pricing (mio. USD17MER per yr)

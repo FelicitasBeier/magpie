@@ -25,4 +25,3 @@ vm_watdem.fx(watdem_exo25,j) = 0;
 
 v25_watavail.fx(j,"renewable") = i25_wat_avail(t,j,"renewable");
 v25_watavail.fx(j,"non_renewable") = i25_wat_avail(t,j,"non_renewable");
-v25_watavail.fx(j,"technical") = i25_wat_avail(t,j,"technical");

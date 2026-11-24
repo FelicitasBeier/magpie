@@ -13,7 +13,7 @@ $if "%c25_climate_scenario%" == "nocc_hist" abort$(sm_fix_cc <> f25_harmonizatio
 *' Area equipped for irrigation in initialization year
 pc25_AEI_start(j) = f25_irrig("y1995",j);
 
-*' Potenially irrigated area scenario selection
+*' Potentially irrigated area scenario selection
 p25_PIA(t_all,j) = f25_pia(t_all,j,"%c25_water_scenario%","%c25_climate_scenario%");
 
 *' Share of AEI that depreciates within a time step (geometric depreciation over the time step length).
@@ -39,17 +39,13 @@ i25_wat_req_k(t,j,kli) = f25_wat_req_kli(kli);
 *' Water reserved for non-agricultural purposes (exogenous to MAgPIE)
 *' are already subtracted, such that these freshwater sources are those 
 *' available for agricultural usage.
-*' Technical water refers to desalination and is not explicitly accounted for in MAgPIE.
+*' Desalination is not accounted for.
 i25_wat_avail(t,j,"renewable") = f25_wat_avail(t,j,"%c25_water_scenario%","%c25_climate_scenario%","withdrawal");
 i25_wat_avail(t,j,"non_renewable") = f25_nonren_gw(t,j,"nonren_ag");
-i25_wat_avail(t,j,"technical") = 0;
 
 *' Non-agricultural water use of the selected scenario (reporting only)
 i25_wat_nonag(t,j,nonag25,wtype25) = f25_wat_nonag(t,j,"%c25_water_scenario%","%c25_climate_scenario%",nonag25,wtype25);
 
-*' Where exogenous water demands exceed renewable and non-renewable water availability,
-*' technical water resources (e.g., desalination) can provide the missing water.
-*** To Do: Delete if this is no longer needed. (If it can be deleted: simplify: v25_watavail no longer needed. Just use i25_wat_avail)
-*v25_watavail.fx("technical",j) = v25_watavail.up(j,"technical")
-*                             + (((sum(watdem_exo25, vm_watdem.lo(watdem_exo25,j)) - sum(wat_source25,v25_watavail.up(j,wat_source25))) * 1.01))
-*                             $(sum(watdem_exo25, vm_watdem.lo(watdem_exo25,j)) - sum(wat_source25,v25_watavail.up(j,wat_source25)) > 0);
+* The input files must contain data for the selected water and climate scenario
+abort$(sum((t,j), p25_PIA(t,j)) = 0) "Module 25: f25_pia contains no data for the selected c25_water_scenario and c25_climate_scenario. Check the input files.";
+abort$(sum((t,j), i25_wat_avail(t,j,"renewable")) = 0) "Module 25: f25_wat_avail contains no data for the selected c25_water_scenario and c25_climate_scenario. Check the input files.";

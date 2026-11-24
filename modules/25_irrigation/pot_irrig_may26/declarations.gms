@@ -5,6 +5,12 @@
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
 
+* Module 25 replaces modules 41, 42 and 43, which must be off when it is active
+* (otherwise vm_AEI and vm_watdem would be constrained twice)
+$ifi not "%area_equipped_for_irrigation%" == "off" $abort "Module 25 (pot_irrig_may26) requires area_equipped_for_irrigation = off"
+$ifi not "%water_demand%" == "off" $abort "Module 25 (pot_irrig_may26) requires water_demand = off"
+$ifi not "%water_availability%" == "off" $abort "Module 25 (pot_irrig_may26) requires water_availability = off"
+
 variables
  vm_cost_AEI(i)                                    Annuitized irrigation expansion costs (mio. USD17MER per yr)
  vm_water_cost(i)                                  Cost of volumetric agricultural water pricing (mio. USD17MER per yr)

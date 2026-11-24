@@ -13,7 +13,7 @@ $setglobal c25_water_scenario  ssp2
 *              for potential irrigation, not harmonized with ssp2)
 
 scalars
-s25_AEI_depreciation               Annual depreciation rate of area equipped for irrigation (1) / 0 /
+s25_AEI_depreciation               Annual depreciation rate of area equipped for irrigation (1) / 0.025 /
 s25_water_price                    Volumetric price for agricultural water withdrawals (USD17MER per m^3) / 0 /
 s25_water_price_startyear          Year from which volumetric water pricing is implemented / 2025 /
 ;
